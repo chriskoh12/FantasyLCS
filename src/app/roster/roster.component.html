@@ -1,11 +1,29 @@
-<h2>Roster</h2>
-<div cdkDropList class="example-list" id="roster" [cdkDropListData]="roster" [cdkDropListConnectedTo]="['bench']" (cdkDropListDropped)="drop($event)">
-    <div class="example-box" *ngFor="let player of roster" cdkDrag>{{player}}</div>
+<!-- <h2>Roster</h2> -->
+
+<div *ngFor="let team of teams">
+    <h1>{{team.teamLeader}}</h1>
+    <div cdkDropListGroup>
+        <div cdkDropList *ngFor="let player of team.roster" class="example-list" id="{{team.teamLeader}}"
+            [cdkDropListData]="team.roster"
+            (cdkDropListDropped)="drop($event)">
+            <div class="example-box" cdkDrag>
+                <h2>{{player.name}}</h2>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- <div cdkDropList class="example-list" id="roster" [cdkDropListData]="rosterImg" [cdkDropListConnectedTo]="['bench']" (cdkDropListDropped)="drop($event)">
+    <div class="example-box" *ngFor="let playerImg of rosterImg" cdkDrag>
+        <img [src]="playerImg">
+    </div>
 </div>
 
 <br>
 
 <h2>Bench</h2>
-<div cdkDropList class="example-list" id="bench" [cdkDropListData]="bench" [cdkDropListConnectedTo]="['roster']" (cdkDropListDropped)="drop($event)">
-    <div class="example-box" *ngFor="let player of bench" cdkDrag>{{player}}</div>
-</div>
+<div cdkDropList class="example-list" id="bench" [cdkDropListData]="benchImg" [cdkDropListConnectedTo]="['roster']" (cdkDropListDropped)="drop($event)">
+    <div class="example-box" *ngFor="let playerImg of benchImg" cdkDrag>
+        <img [src]="playerImg">
+    </div>
+</div> -->
