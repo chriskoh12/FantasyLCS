@@ -1,13 +1,19 @@
 <!-- <h2>Roster</h2> -->
 
-<div *ngFor="let team of teams">
-    <h1>{{team.teamLeader}}</h1>
-    <div cdkDropListGroup>
-        <div cdkDropList *ngFor="let player of team.roster" class="example-list" id="{{team.teamLeader}}"
-            [cdkDropListData]="team.roster"
-            (cdkDropListDropped)="drop($event)">
-            <div class="example-box" cdkDrag>
-                <h2>{{player.name}}</h2>
+<div class="rosters">
+    <div *ngFor="let team of teams">
+        <h1>{{team.teamLeader}}</h1>
+        <div cdkDropListGroup>
+            <div cdkDropList class="example-list" *ngFor="let player of team.roster" id="{{team.teamLeader}}"
+                [cdkDropListData]="team.roster" (cdkDropListDropped)="drop($event)">
+                <div class="example-box" cdkDrag>
+                    <div class="example-box" *ngIf="player.name; else blankPlaceholder">
+                        <img [src]="getPicture(player.name)" [alt]="getPicture(player.name)">
+                    </div>
+                    <ng-template #blankPlaceholder>
+                        <h2>no player</h2>
+                    </ng-template>
+                </div>
             </div>
         </div>
     </div>

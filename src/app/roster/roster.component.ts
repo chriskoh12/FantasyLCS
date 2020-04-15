@@ -19,25 +19,25 @@ export class RosterComponent implements OnInit {
 
   rosters: Player[][] = [
     [
-      { name: 'Impact', position: 'top' }, 
-      { name: 'Broxah', position: 'jng' },
-      { name: '', position: 'mid' }, 
-      { name: 'Doublelift', position: 'adc' }, 
-      { name: 'CoreJJ', position: 'sup'}
+      { name: 'BrokenBlade', position: 'top' }, 
+      { name: 'Bwipo', position: 'jng' },
+      { name: 'Wunder', position: 'mid' }, 
+      { name: 'Licorice', position: 'adc' }, 
+      { name: 'Wunder', position: 'sup'}
     ],
     [
-      { name: 'Impact', position: 'top' }, 
-      { name: 'Broxah', position: 'jng' },
+      { name: 'BrokenBlade', position: 'top' }, 
+      { name: 'Bwipo', position: 'jng' },
       { name: 'Jensen', position: 'mid' }, 
-      { name: 'Doublelift', position: 'adc' }, 
-      { name: 'CoreJJ', position: 'sup'}
+      { name: 'Licorice', position: 'adc' }, 
+      { name: 'Wunder', position: 'sup'}
     ],
     [
-      { name: 'Impact', position: 'top' }, 
-      { name: 'Broxah', position: 'jng' },
+      { name: 'BrokenBlade', position: 'top' }, 
+      { name: 'Bwipo', position: 'jng' },
       { name: 'Jensen', position: 'mid' }, 
-      { name: 'Doublelift', position: 'adc' }, 
-      { name: 'CoreJJ', position: 'sup'}
+      { name: 'Licorice', position: 'adc' }, 
+      { name: 'Wunder', position: 'sup'}
     ]
     // ['BrokenBlade', 'Dardoch', 'Bjergsen', 'Kobbe', 'Biofrost'],
     // ['Licorice', 'Blaber', 'Nisqy', 'Zven', 'Vulcan'],
@@ -88,7 +88,7 @@ export class RosterComponent implements OnInit {
   rosterImg: string[] = [];
   benchImg: string[] = [];
 
-  drop(event: CdkDragDrop<string[]>) {
+  drop(event: CdkDragDrop<string[]>): void {
     console.log(event);
     // if (event.previousContainer === event.container) {
     //   moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
@@ -102,16 +102,20 @@ export class RosterComponent implements OnInit {
     // }
   }
 
+  getPicture(playerName: string): string {
+    return '/assets/' + playerName.replace(/\s/g, '') + '.png';
+  }
+
   constructor() { }
 
   ngOnInit(): void {
-    // this.roster.forEach(item => {
-    //   this.rosterImg.push("assets/" + item + ".png");
-    // })
+  //   this.roster.forEach(item => {
+  //     this.rosterImg.push("assets/" + item + ".png");
+  //   })
 
-    // this.bench.forEach(item => {
-    //   this.benchImg.push("assets/" + item + ".png");
-    // })
+  //   this.bench.forEach(item => {
+  //     this.benchImg.push("assets/" + item + ".png");
+  //   })
   }
 
 }
