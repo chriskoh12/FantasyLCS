@@ -3,7 +3,7 @@ export class Team {
     teamLeader: string;
     roster: Player[];
     bench: Player[]
-};
+}
 
 export class Player {
     name: string;
