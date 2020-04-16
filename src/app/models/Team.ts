@@ -1,6 +1,6 @@
 export class Team {
-    teamName: string;
-    teamLeader: string;
+    name: string;
+    coach: string;
     roster: Player[];
     bench: Player[];
 }
