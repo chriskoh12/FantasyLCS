@@ -9,35 +9,47 @@ import { Team, Player, Position } from '../models/Team';
 })
 export class RosterComponent implements OnInit {
 
+  nav: string[] = [
+    'nav1',
+    'nav2',
+    'nav3'
+  ];
+
   positions: string[] = [
     'top',
     'jng',
     'mid',
     'adc',
     'sup'
-  ]
+  ];
 
   rosters: Player[][] = [
     [
-      { name: 'BrokenBlade', position: 'top' }, 
-      { name: 'Bwipo', position: 'jng' },
-      { name: 'Wunder', position: 'mid' }, 
-      { name: 'Licorice', position: 'adc' }, 
-      { name: 'Wunder', position: 'sup'}
+      { name: 'BrokenBlade', position: 'top' },
+      { name: 'Dardoch', position: 'jng' },
+      { name: 'Bjergsen', position: 'mid' },
+      { name: '', position: 'adc' },
+      { name: 'Biofrost', position: 'sup' },
+      { name: 'Bjergsen', position: 'mid' },
+      { name: 'Team Solo Mid', position: 'team' }
     ],
     [
-      { name: 'BrokenBlade', position: 'top' }, 
-      { name: 'Bwipo', position: 'jng' },
-      { name: 'Jensen', position: 'mid' }, 
-      { name: 'Licorice', position: 'adc' }, 
-      { name: 'Wunder', position: 'sup'}
+      { name: 'BrokenBlade', position: 'top' },
+      { name: 'Dardoch', position: 'jng' },
+      { name: 'Bjergsen', position: 'mid' },
+      { name: 'Kobbe', position: 'adc' },
+      { name: 'Biofrost', position: 'sup' },
+      { name: 'Bjergsen', position: 'mid' },
+      { name: 'Team Solo Mid', position: 'team' }
     ],
     [
-      { name: 'BrokenBlade', position: 'top' }, 
-      { name: 'Bwipo', position: 'jng' },
-      { name: 'Jensen', position: 'mid' }, 
-      { name: 'Licorice', position: 'adc' }, 
-      { name: 'Wunder', position: 'sup'}
+      { name: 'BrokenBlade', position: 'top' },
+      { name: 'Dardoch', position: 'jng' },
+      { name: 'Bjergsen', position: 'mid' },
+      { name: 'Kobbe', position: 'adc' },
+      { name: 'Biofrost', position: 'sup' },
+      { name: 'Bjergsen', position: 'mid' },
+      { name: 'Team Solo Mid', position: 'team' }
     ]
     // ['BrokenBlade', 'Dardoch', 'Bjergsen', 'Kobbe', 'Biofrost'],
     // ['Licorice', 'Blaber', 'Nisqy', 'Zven', 'Vulcan'],
@@ -62,7 +74,7 @@ export class RosterComponent implements OnInit {
       { name: 'Dardoch', position: 'jng' },
       { name: 'Bjergsen', position: 'mid' }
     ]
-  ]
+  ];
 
   teams: Team[] = [
     {
@@ -85,16 +97,12 @@ export class RosterComponent implements OnInit {
     }
   ];
 
-  rosterImg: string[] = [];
-  benchImg: string[] = [];
-
   drop(event: CdkDragDrop<string[]>): void {
     console.log(event);
     // if (event.previousContainer === event.container) {
     //   moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     //   //moveItemInArray(this.roster, event.previousIndex, event.currentIndex);
     // } else {
-    //   console.log("transferring " + event.previousContainer.data[event.previousIndex] + " to " + event.container.data + " position " + event.currentIndex);
     //   transferArrayItem(event.previousContainer.data,
     //     event.container.data,
     //     event.previousIndex,
@@ -109,13 +117,6 @@ export class RosterComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-  //   this.roster.forEach(item => {
-  //     this.rosterImg.push("assets/" + item + ".png");
-  //   })
-
-  //   this.bench.forEach(item => {
-  //     this.benchImg.push("assets/" + item + ".png");
-  //   })
   }
 
 }
