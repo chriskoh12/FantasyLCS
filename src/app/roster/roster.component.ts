@@ -26,11 +26,11 @@ export class RosterComponent implements OnInit {
   rosters: Player[][] = [
     [
       { name: 'BrokenBlade', position: 'top' },
-      { name: 'Dardoch', position: 'jng' },
+      { name: '', position: 'jng' },
       { name: 'Bjergsen', position: 'mid' },
       { name: '', position: 'adc' },
       { name: 'Biofrost', position: 'sup' },
-      { name: 'Bjergsen', position: 'mid' },
+      { name: '', position: 'mid' },
       { name: 'Team Solo Mid', position: 'team' }
     ],
     [
