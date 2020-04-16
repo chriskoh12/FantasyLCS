@@ -2,7 +2,7 @@ export class Team {
     teamName: string;
     teamLeader: string;
     roster: Player[];
-    bench: Player[]
+    bench: Player[];
 }
 
 export class Player {
@@ -10,4 +10,4 @@ export class Player {
     position: Position;
 }
 
-export type Position = 'top' | 'jng' | 'mid' | 'adc' | 'sup';
+export type Position = 'top' | 'jng' | 'mid' | 'adc' | 'sup' | 'team';
