@@ -10,4 +10,14 @@ export class Player {
     position: Position;
 }
 
-export type Position = 'top' | 'jng' | 'mid' | 'adc' | 'sup' | 'team';
+// export type Position = 'top' | 'jng' | 'mid' | 'adc' | 'sup' | 'team';
+
+export enum Position {
+    top = 0,
+    jng,
+    mid,
+    adc,
+    sup,
+    flex,
+    team
+}

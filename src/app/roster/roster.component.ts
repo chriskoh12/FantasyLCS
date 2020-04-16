@@ -25,31 +25,31 @@ export class RosterComponent implements OnInit {
 
   rosters: Player[][] = [
     [
-      { name: 'BrokenBlade', position: 'top' },
-      { name: 'Dardoch', position: 'jng' },
-      { name: 'Bjergsen', position: 'mid' },
-      { name: 'Kobbe', position: 'adc' },
-      { name: 'Biofrost', position: 'sup' },
-      { name: '', position: 'mid' },
-      { name: 'Team Solo Mid', position: 'team' }
+      { name: 'BrokenBlade', position: Position.top },
+      { name: 'Dardoch', position: Position.jng },
+      { name: 'Bjergsen', position: Position.mid },
+      { name: 'Kobbe', position: Position.adc },
+      { name: 'Biofrost', position: Position.sup },
+      null,
+      { name: 'Team Solo Mid', position: Position.team }
     ],
     // [
-    //   { name: 'BrokenBlade', position: 'top' },
-    //   { name: 'Dardoch', position: 'jng' },
-    //   { name: 'Bjergsen', position: 'mid' },
+    //   { name: 'BrokenBlade', Position.top },
+    //   { name: 'Dardoch', position: Position.jng },
+    //   { name: 'Bjergsen', position: Position.mid },
     //   { name: 'Kobbe', position: 'adc' },
     //   { name: 'Biofrost', position: 'sup' },
-    //   { name: 'Bjergsen', position: 'mid' },
+    //   { name: 'Bjergsen', position: Position.mid },
     //   { name: 'Team Solo Mid', position: 'team' }
     // ],
     [
-      { name: 'Licorice', position: 'top' },
-      { name: 'Blaber', position: 'jng' },
-      { name: 'Nisqy', position: 'mid' },
-      { name: 'Zven', position: 'adc' },
-      { name: 'Vulcan', position: 'sup' },
-      { name: '', position: 'mid' },
-      { name: '', position: 'team' }
+      { name: 'Licorice', position: Position.top },
+      { name: 'Blaber', position: Position.jng },
+      { name: 'Nisqy', position: Position.mid },
+      { name: 'Zven', position: Position.adc },
+      { name: 'Vulcan', position: Position.sup },
+      null,
+      null
     ]
     // ['BrokenBlade', 'Dardoch', 'Bjergsen', 'Kobbe', 'Biofrost'],
     // ['Licorice', 'Blaber', 'Nisqy', 'Zven', 'Vulcan'],
@@ -60,19 +60,19 @@ export class RosterComponent implements OnInit {
 
   benches: Player[][] = [
     [
-      { name: 'BrokenBlade', position: 'top' },
-      { name: 'Dardoch', position: 'jng' },
-      { name: 'Bjergsen', position: 'mid' }
+      { name: 'BrokenBlade', position: Position.top },
+      { name: 'Dardoch', position: Position.jng },
+      { name: 'Bjergsen', position: Position.mid }
     ],
     [
-      { name: 'BrokenBlade', position: 'top' },
-      { name: 'Dardoch', position: 'jng' },
-      { name: 'Bjergsen', position: 'mid' }
+      { name: 'BrokenBlade', position: Position.top },
+      { name: 'Dardoch', position: Position.jng },
+      { name: 'Bjergsen', position: Position.mid }
     ],
     [
-      { name: 'BrokenBlade', position: 'top' },
-      { name: 'Dardoch', position: 'jng' },
-      { name: 'Bjergsen', position: 'mid' }
+      { name: 'BrokenBlade', position: Position.top },
+      { name: 'Dardoch', position: Position.jng },
+      { name: 'Bjergsen', position: Position.mid }
     ]
   ];
 
@@ -98,22 +98,19 @@ export class RosterComponent implements OnInit {
   ];
 
   drop(event: CdkDragDrop<string[]>): void {
-    // console.log(event);
     const prevTeam: number = +event.previousContainer.data[0];
     const prevPlayer: number = +event.previousContainer.data[1];
     const team: number = +event.container.data[0];
     const player: number = +event.container.data[1];
+    console.log(this.checkPlayerRole(this.rosters[prevTeam][prevPlayer], player));
     [this.rosters[prevTeam][prevPlayer], this.rosters[team][player]] = [this.rosters[team][player], this.rosters[prevTeam][prevPlayer]];
-    // console.log("move " + event.container.data)
-    // if (event.previousContainer === event.container) {
-    //   moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
-    //   //moveItemInArray(this.roster, event.previousIndex, event.currentIndex);
-    // } else {
-    //   transferArrayItem(event.previousContainer.data,
-    //     event.container.data,
-    //     event.previousIndex,
-    //     event.currentIndex);
-    // }
+  }
+
+  checkPlayerRole(player: Player, rosterPosition: number): boolean {
+    if (player.position === rosterPosition){
+      return true;
+    }
+    return false;
   }
 
   getPicture(playerName: string): string {
