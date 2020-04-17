@@ -129,7 +129,7 @@ export class RosterComponent implements OnInit {
       name: 'c',
       coach: 'Alex',
       roster: this.rosters[4],
-      bench: this.benches[4]
+      bench: this.benches[22]
     }
   ];
 
@@ -138,15 +138,41 @@ export class RosterComponent implements OnInit {
     const prevPlayer: number = +event.previousContainer.data[1];
     const team: number = +event.container.data[0];
     const player: number = +event.container.data[1];
-    [this.rosters[prevTeam][prevPlayer], this.rosters[team][player]] = [this.rosters[team][player], this.rosters[prevTeam][prevPlayer]];
+    const actionAllowed = this.checkPlayerSwapValid(prevTeam, prevPlayer, team, player);
+    if (actionAllowed === 1){
+      [this.rosters[prevTeam][prevPlayer], this.rosters[team][player]] = [this.rosters[team][player], this.rosters[prevTeam][prevPlayer]];
+    }
   }
 
-  checkPlayerRole(prevTeam: number, prevPlayer: number, team: number, player: number): boolean {
-
-    return false;
+  checkPlayerSwapValid(prevTeam: number, prevPlayer: number, team: number, player: number): number {
+    // console.log('position trying to be moved to is: ' + (Position.top + player));
+    const firstPlayerPos = this.rosters[prevTeam][prevPlayer].position;
+    const secondPlayerPos = this.rosters[team][player] ? this.rosters[team][player].position : null;
+    const allowMove: boolean = this.checkPlayerValid(firstPlayerPos, Position.top + player);
+    // console.log(this.rosters[prevTeam][prevPlayer]);
+    const allowSwap: boolean = this.checkPlayerValid(secondPlayerPos, Position.top + prevPlayer);
+    if (allowMove){
+      if (allowSwap){
+        return 1;
+      }
+      return 0;
+    }
+    return -1;
   }
 
-  getPicture(playerName: string): string {
+  checkPlayerValid(playerPos: Position, destPos: Position): boolean {
+    // console.log('checking ' + playerPos + ' ' + destPos);
+    if (playerPos === null){
+      return true;
+    }
+    if (destPos === Position.flex && playerPos !== Position.team){
+      return true;
+    }
+    // console.log('returning ' + (destPos === playerPos));
+    return destPos === playerPos;
+  }
+
+  getPlayerPicture(playerName: string): string {
     return '/assets/' + playerName.replace(/\s/g, '') + '.png';
   }
 

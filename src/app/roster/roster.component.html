@@ -16,7 +16,7 @@
                     <img *cdkDragPreview src="assets/memesen.png">
                 </div>
                 <!-- MEMES -->
-                <img [src]="getPicture(player.name)" [alt]="getPicture(player.name)">
+                <img [src]="getPlayerPicture(player.name)" [alt]="getPlayerPicture(player.name)">
             </div>
             <ng-template #blankPlaceholder>
                 <div [class]="" cdkDrag [cdkDragDisabled]="true"> <!-- can set background to blank banner based on teamNum -->
