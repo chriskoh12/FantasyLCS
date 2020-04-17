@@ -33,15 +33,15 @@ export class RosterComponent implements OnInit {
       null,
       { name: 'Team Solo Mid', position: Position.team }
     ],
-    // [
-    //   { name: 'BrokenBlade', Position.top },
-    //   { name: 'Dardoch', position: Position.jng },
-    //   { name: 'Bjergsen', position: Position.mid },
-    //   { name: 'Kobbe', position: 'adc' },
-    //   { name: 'Biofrost', position: 'sup' },
-    //   { name: 'Bjergsen', position: Position.mid },
-    //   { name: 'Team Solo Mid', position: 'team' }
-    // ],
+    [
+      { name: 'Dan Dan', position: Position.top },
+      { name: 'Razork', position: Position.jng },
+      { name: 'Febiven', position: Position.mid },
+      { name: 'Bvoy', position: Position.adc },
+      { name: 'Denyk', position: Position.sup },
+      null,
+      { name: 'Misfits', position: Position.team }
+    ],
     [
       { name: 'Licorice', position: Position.top },
       { name: 'Blaber', position: Position.jng },
@@ -49,13 +49,35 @@ export class RosterComponent implements OnInit {
       { name: 'Zven', position: Position.adc },
       { name: 'Vulcan', position: Position.sup },
       null,
-      null
+      { name: 'Cloud 9', position: Position.team }
+    ],
+    [
+      { name: 'Kumo', position: Position.top },
+      { name: 'Svenskeren', position: Position.jng },
+      { name: 'Jiizuke', position: Position.mid },
+      { name: 'Bang', position: Position.adc },
+      { name: 'Zeyzal', position: Position.sup },
+      null,
+      { name: 'Evil Geniuses', position: Position.team }
+    ],
+    [
+      { name: 'V1per', position: Position.top },
+      { name: 'Santorin', position: Position.jng },
+      { name: 'PowerofEvil', position: Position.mid },
+      { name: 'WildTurtle', position: Position.adc },
+      { name: 'Ignar', position: Position.sup },
+      null,
+      { name: 'Flyquest', position: Position.team }
+    ],
+    [
+      { name: 'V1per', position: Position.top },
+      { name: 'Santorin', position: Position.jng },
+      { name: 'PowerofEvil', position: Position.mid },
+      { name: 'WildTurtle', position: Position.adc },
+      { name: 'Ignar', position: Position.sup },
+      null,
+      { name: 'Flyquest', position: Position.team }
     ]
-    // ['BrokenBlade', 'Dardoch', 'Bjergsen', 'Kobbe', 'Biofrost'],
-    // ['Licorice', 'Blaber', 'Nisqy', 'Zven', 'Vulcan'],
-    // ['Wunder', 'Jankos', 'Perkz', 'Caps', 'Mikyx'],
-    // ['Bwipo', 'Selfmade', 'Nemesis', 'Rekkles', 'Hylissang'],
-    // ['Alphari', 'Xerxe', 'NukeDuck', 'Upset', 'Destiny']
   ];
 
   benches: Player[][] = [
@@ -89,12 +111,24 @@ export class RosterComponent implements OnInit {
       roster: this.rosters[1],
       bench: this.benches[1]
     },
-    // {
-    //   teamName: 'c',
-    //   teamLeader: 'Griffin',
-    //   roster: this.rosters[2],
-    //   bench: this.benches[2]
-    // }
+    {
+      name: 'c',
+      coach: 'Griffin',
+      roster: this.rosters[2],
+      bench: this.benches[2]
+    },
+    {
+      name: 'c',
+      coach: 'Andrew',
+      roster: this.rosters[3],
+      bench: this.benches[2]
+    },
+    {
+      name: 'c',
+      coach: 'Alex',
+      roster: this.rosters[4],
+      bench: this.benches[4]
+    }
   ];
 
   drop(event: CdkDragDrop<string[]>): void {
@@ -102,14 +136,11 @@ export class RosterComponent implements OnInit {
     const prevPlayer: number = +event.previousContainer.data[1];
     const team: number = +event.container.data[0];
     const player: number = +event.container.data[1];
-    console.log(this.checkPlayerRole(this.rosters[prevTeam][prevPlayer], player));
     [this.rosters[prevTeam][prevPlayer], this.rosters[team][player]] = [this.rosters[team][player], this.rosters[prevTeam][prevPlayer]];
   }
 
-  checkPlayerRole(player: Player, rosterPosition: number): boolean {
-    if (player.position === rosterPosition){
-      return true;
-    }
+  checkPlayerRole(prevTeam: number, prevPlayer: number, team: number, player: number): boolean {
+
     return false;
   }
 
