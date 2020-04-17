@@ -3,17 +3,19 @@
   height: 30px;
   /* padding: 20px 20px 20px 20px; */
   max-width: 100%;
-  border: solid 1px #ccc;
+  border: solid 1px rgb(43, 43, 43);
   /* min-height: 60px; */
   display: block;
-  background: white;
+  background: rgb(43, 43, 43);
   border-radius: 4px;
   overflow: hidden;
 }
 
 .example-box {
   /* padding: 20px 10px; */
-  border-bottom: solid 1px #ccc;
+  width: fit-content;
+  height: fit-content;
+  border-bottom: solid 1px rgb(43, 43, 43);
   color: rgba(0, 0, 0, 0.87);
   display: flex;
   flex-direction: row;
@@ -39,11 +41,11 @@
   transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
 }
 
-.cdk-drop-list-receiving {
+/* .cdk-drop-list-receiving {
   -moz-box-shadow: 0 0 5px #fff;
   -webkit-box-shadow: 0 0 5px #fff;
   box-shadow: 0px 0px 5px #fff;
-}
+} */
 
 .example-box:last-child {
   border: none;

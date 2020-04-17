@@ -1,10 +1,9 @@
-<!-- <h2>Roster</h2> -->
 
 <div style="height: 100px; display: flex; flex-direction: row;">
     <div style="border-style: solid;" *ngFor="let tab of nav">{{tab}}</div>
 </div>
 
-<hr>
+<mat-divider></mat-divider>
 
 <div cdkDropListGroup class="rosters">
     <div *ngFor="let team of teams; let teamNum = index">
@@ -13,31 +12,17 @@
             (cdkDropListDropped)="drop($event)">
             <div class="example-box" *ngIf="player; else blankPlaceholder" cdkDrag>
                 <!-- MEMES -->
-                <div *ngIf="player.name === 'Bjergsen'">
+                <div *ngIf="player.name === 'Biofrost'">
                     <img *cdkDragPreview src="assets/memesen.png">
                 </div>
+                <!-- MEMES -->
                 <img [src]="getPicture(player.name)" [alt]="getPicture(player.name)">
             </div>
             <ng-template #blankPlaceholder>
-                <!-- <div class="placeholder" cdkDrag>
-                        <h2>No Player</h2>
-                    </div> -->
+                <div [class]="" cdkDrag [cdkDragDisabled]="true"> <!-- can set background to blank banner based on teamNum -->
+                    {{playerNum}} <!-- can set text to role based on playerNum -->
+                    </div>
             </ng-template>
         </div>
     </div>
 </div>
-
-<!-- <div cdkDropList class="example-list" id="roster" [cdkDropListData]="rosterImg" [cdkDropListConnectedTo]="['bench']" (cdkDropListDropped)="drop($event)">
-    <div class="example-box" *ngFor="let playerImg of rosterImg" cdkDrag>
-        <img [src]="playerImg">
-    </div>
-</div>
-
-<br>
-
-<h2>Bench</h2>
-<div cdkDropList class="example-list" id="bench" [cdkDropListData]="benchImg" [cdkDropListConnectedTo]="['roster']" (cdkDropListDropped)="drop($event)">
-    <div class="example-box" *ngFor="let playerImg of benchImg" cdkDrag>
-        <img [src]="playerImg">
-    </div>
-</div> -->

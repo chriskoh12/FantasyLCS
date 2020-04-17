@@ -9,6 +9,8 @@ import { Team, Player, Position } from '../models/Team';
 })
 export class RosterComponent implements OnInit {
 
+
+
   nav: string[] = [
     'nav1',
     'nav2',
@@ -67,7 +69,7 @@ export class RosterComponent implements OnInit {
       { name: 'WildTurtle', position: Position.adc },
       { name: 'Ignar', position: Position.sup },
       null,
-      { name: 'Flyquest', position: Position.team }
+      { name: 'FlyQuest', position: Position.team }
     ],
     [
       { name: 'V1per', position: Position.top },
@@ -76,7 +78,7 @@ export class RosterComponent implements OnInit {
       { name: 'WildTurtle', position: Position.adc },
       { name: 'Ignar', position: Position.sup },
       null,
-      { name: 'Flyquest', position: Position.team }
+      { name: 'FlyQuest', position: Position.team }
     ]
   ];
 
