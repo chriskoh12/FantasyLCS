@@ -31,7 +31,7 @@ export class RosterComponent implements OnInit {
       { name: 'Kobbe', position: Position.adc, team: 'TSM' },
       { name: 'Biofrost', position: Position.sup, team: 'TSM' },
       null,
-      { name: 'Team Solo Mid', position: Position.team, team: 'TSM' }
+      { name: 'Team SoloMid', position: Position.team, team: 'TSM' }
     ],
     [
       { name: 'Dan Dan', position: Position.top, team: 'MSF' },
@@ -63,7 +63,7 @@ export class RosterComponent implements OnInit {
     [
       { name: 'V1per', position: Position.top, team: 'FLY' },
       { name: 'Santorin', position: Position.jng, team: 'FLY' },
-      { name: 'PowerofEvil', position: Position.mid, team: 'FLY' },
+      { name: 'PowerOfEvil', position: Position.mid, team: 'FLY' },
       { name: 'WildTurtle', position: Position.adc, team: 'FLY' },
       { name: 'Ignar', position: Position.sup, team: 'FLY' },
       null,
@@ -222,7 +222,9 @@ export class RosterComponent implements OnInit {
 
   returnStyle(team: string) {
     return {
-      'background-image': 'url("../../assets/' + team + '.png")'
+      'background-image': 'url("../../assets/' + team + '.png")',
+      // 'background-repeat': 'no-repeat',
+      // 'background-size': '300px 58.41px'
     };
   }
 
