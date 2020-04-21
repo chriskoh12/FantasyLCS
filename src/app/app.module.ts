@@ -7,11 +7,13 @@ import { RosterComponent } from './roster/roster.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatDividerModule } from '@angular/material/divider';
+import { RostersComponent } from './rosters/rosters.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    RosterComponent
+    RosterComponent,
+    RostersComponent,
   ],
   imports: [
     BrowserModule,

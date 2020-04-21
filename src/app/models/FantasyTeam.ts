@@ -1,11 +1,11 @@
-export class FantasyTeam {
+export interface FantasyTeam {
     name: string;
     coach: string;
     roster: Player[];
     bench: Player[];
 }
 
-export class Player {
+export interface Player {
     name: string;
     position: Position;
     team: Team;
