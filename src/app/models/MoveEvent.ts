@@ -1,10 +1,10 @@
 export interface MoveEvent {
-    from: playerLoc;
-    to: playerLoc;
+    from: PlayerLoc;
+    to: PlayerLoc;
     prevTeam: number;
     prevSpot: number;
     nextTeam: number;
     nextSpot: number;
 }
 
-type playerLoc = 'roster' | 'bench';
+export type PlayerLoc = 'roster' | 'bench';

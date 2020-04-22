@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { RosterComponent } from '../roster/roster.component';
 import { Player, Position, FantasyTeam } from '../models/FantasyTeam';
-import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
+import { transferArrayItem } from '@angular/cdk/drag-drop';
 import { MoveEvent } from '../models/MoveEvent';
 
 @Component({
@@ -58,13 +57,13 @@ export class RostersComponent implements OnInit {
       { name: 'FlyQuest', position: Position.team, team: 'FLY' }
     ],
     [
-      { name: 'Ssumday', position: Position.top, team: '100T' },
-      { name: 'Meteos', position: Position.jng, team: '100T' },
-      { name: 'ry0ma', position: Position.mid, team: '100T' },
-      { name: 'Cody Sun', position: Position.adc, team: '100T' },
-      { name: 'Stunt', position: Position.sup, team: '100T' },
+      { name: 'Ssumday', position: Position.top, team: '100' },
+      { name: 'Meteos', position: Position.jng, team: '100' },
+      { name: 'ry0ma', position: Position.mid, team: '100' },
+      { name: 'Cody Sun', position: Position.adc, team: '100' },
+      { name: 'Stunt', position: Position.sup, team: '100' },
       null,
-      { name: '100 Thieves', position: Position.team, team: '100T' }
+      { name: '100 Thieves', position: Position.team, team: '100' }
     ]
   ];
 
@@ -170,7 +169,6 @@ export class RostersComponent implements OnInit {
         const playerPos = this.benches[prevTeam][prevSpot].position; // position of bench player being moved
         const destPos = nextSpot; // position of destination role
         const moveAllowed = this.checkPlayerValid(playerPos, destPos);
-        console.log('checking ' + playerPos, destPos);
         if (moveAllowed) {
           if (this.rosters[nextTeam][nextSpot]) { // if there is a player in the destination spot, swap them
             [this.rosters[nextTeam][nextSpot], this.benches[prevTeam][prevSpot]]

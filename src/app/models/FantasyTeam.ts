@@ -21,5 +21,5 @@ export enum Position { // Enum used to be able to use addition to determine cdkD
     team
 }
 
-export type Team = 'TL' | 'TSM' | 'C9' | 'CLG' | '100T' | 'FLY' | 'GGS' | 'IMT' | 'DIG' | 'EG' |
+export type Team = 'TL' | 'TSM' | 'C9' | 'CLG' | '100' | 'FLY' | 'GGS' | 'IMT' | 'DIG' | 'EG' |
                    'G2' | 'FNC' | 'OG' | 'VIT' | 'MSF' | 'S04' | 'MAD' | 'SK' | 'XL' | 'RGE';

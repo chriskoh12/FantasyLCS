@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { RosterComponent } from './roster/roster.component';
+import { RosterComponent } from './rosters/roster/roster.component';
 
 
 const routes: Routes = [

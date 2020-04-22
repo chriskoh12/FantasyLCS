@@ -1,0 +1,20 @@
+<h1>{{team.coach}}</h1>
+
+<div cdkDropList class="example-list" *ngFor="let player of team.roster; let positionNum = index" [cdkDropListEnterPredicate]="positionPredicate(positionNum)"
+    [cdkDropListData]="['roster', teamNum, positionNum]" (cdkDropListDropped)="playerMove($event)">
+    <div class="example-box" [ngStyle]="returnStyle(player.team)" *ngIf="player; else blankPlaceholder" [cdkDragData]="player.position" cdkDrag>
+        <img src="assets/BrokenBladeProfile.png" [style]="getPortraitHeight()">
+        {{player.name}}
+    </div>
+    <ng-template #blankPlaceholder>
+        <div class="example-box" cdkDrag [cdkDragDisabled]="true">
+            
+        </div>
+    </ng-template>
+</div>
+
+<div cdkDropList class="bench-list" [cdkDropListData]="['bench', teamNum]" (cdkDropListDropped)="playerMove($event)">
+    <div class="bench-box" [ngStyle]="returnStyle(player.team)" *ngFor="let player of team.bench" [cdkDragData]="player.position" cdkDrag>
+        {{player.name}}
+    </div>
+</div>

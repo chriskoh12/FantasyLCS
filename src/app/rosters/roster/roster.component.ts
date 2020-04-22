@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
-import { FantasyTeam, Player, Position } from '../models/FantasyTeam';
-import { MoveEvent } from '../models/MoveEvent';
+import { CdkDragDrop, moveItemInArray, transferArrayItem, CdkDrag } from '@angular/cdk/drag-drop';
+import { FantasyTeam, Player, Position } from '../../models/FantasyTeam';
+import { MoveEvent, PlayerLoc } from '../../models/MoveEvent';
 
 @Component({
   selector: 'app-roster',
@@ -20,6 +20,12 @@ export class RosterComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  getPortraitHeight(){
+    return {
+      'height': '47px'
+    };
+  }
+
   returnStyle(team: string) {
     return {
       'background-image': 'url("../../assets/' + team + '.png")',
@@ -28,7 +34,7 @@ export class RosterComponent implements OnInit {
     };
   }
 
-  rosterPlayerMove(event): void { // emits the indices of the spots that are being moved between
+  playerMove(event: CdkDragDrop<[PlayerLoc, number, number]>): void { // emits the indices of the spots that are being moved between
     const moveEvent: MoveEvent = {
       from: event.previousContainer.data[0],
       to: event.container.data[0],
@@ -38,6 +44,19 @@ export class RosterComponent implements OnInit {
       nextSpot: event.container.data[2] ? event.container.data[2] : event.currentIndex // is null if going to bench
     };
     this.playerMoved.emit(moveEvent);
+  }
+
+  positionPredicate(positionNum: number): (eventData: CdkDrag<Position>) => boolean{
+    // console.log(positionNum);
+    return (eventData => {
+      // console.log(eventData.data);
+      if (positionNum === 5 && eventData.data !== 6){
+        // console.log('returning true');
+        return true;
+      }
+      // console.log('returrning ' + (positionNum === eventData.data));
+      return positionNum === eventData.data;
+    });
   }
 
 }
