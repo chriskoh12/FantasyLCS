@@ -142,13 +142,8 @@ export class RostersComponent implements OnInit {
   bench to roster (check if player can fit in slot, if so then move them and splice out the spot where they were)
   bench to bench (just transfer the player to the other array)
   */
-  handlePlayerMove(moveEvent: MoveEvent) {
+  handlePlayerMove(moveEvent: MoveEvent) { // TODO refactor for better organization
     const { prevTeam, prevSpot, nextTeam, nextSpot } = moveEvent; // destructure moveEvent for easier var names
-
-    // console.log(this.rosters[prevTeam].length + ' ' + this.benches[prevTeam].length);
-    if (this.rosters[nextTeam].length + this.benches[nextTeam].length > this.MAX_ROSTER_SIZE){
-      return;
-    }
 
     if (moveEvent.from === 'roster') {
       if (moveEvent.to === 'roster') { // if moving from roster to roster
@@ -157,7 +152,7 @@ export class RostersComponent implements OnInit {
           [this.rosters[prevTeam][prevSpot], this.rosters[nextTeam][nextSpot]]
             = [this.rosters[nextTeam][nextSpot], this.rosters[prevTeam][prevSpot]];
         }
-        else if (actionAllowed === 0) {
+        else if (actionAllowed === 0 && !this.isRosterFull(nextTeam)) {
           // move other player to bench
           transferArrayItem(this.rosters[nextTeam], this.benches[nextTeam], nextSpot, this.benches[nextTeam].length);
           transferArrayItem(this.rosters[prevTeam], this.rosters[nextTeam], prevSpot, nextSpot); // move player to destination
@@ -166,8 +161,10 @@ export class RostersComponent implements OnInit {
       }
 
       else { // if moving from roster to bench
-        transferArrayItem(this.rosters[prevTeam], this.benches[nextTeam], prevSpot, nextSpot);
-        this.rosters[prevTeam].splice(prevSpot, 0, null);
+        if (!this.isRosterFull(nextTeam)){
+          transferArrayItem(this.rosters[prevTeam], this.benches[nextTeam], prevSpot, nextSpot);
+          this.rosters[prevTeam].splice(prevSpot, 0, null);
+        }
       }
     }
 
@@ -182,13 +179,17 @@ export class RostersComponent implements OnInit {
               = [this.benches[prevTeam][prevSpot], this.rosters[nextTeam][nextSpot]];
           }
           else { // if the destination spot is blank, just put them in
-            transferArrayItem(this.benches[prevTeam], this.rosters[nextTeam], prevSpot, nextSpot);
-            this.rosters[nextTeam].splice(destPos + 1, 1);
+            if (!this.isRosterFull(nextTeam)){
+              transferArrayItem(this.benches[prevTeam], this.rosters[nextTeam], prevSpot, nextSpot);
+              this.rosters[nextTeam].splice(destPos + 1, 1);
+            }
           }
         }
       }
       else { // if moving from bench to bench
-        transferArrayItem(this.benches[prevTeam], this.benches[nextTeam], prevSpot, nextSpot);
+        if (!this.isRosterFull(nextTeam)){
+          transferArrayItem(this.benches[prevTeam], this.benches[nextTeam], prevSpot, nextSpot);
+        }
       }
     }
   }
@@ -215,6 +216,18 @@ export class RostersComponent implements OnInit {
       return true;
     }
     return destPos === playerPos;
+  }
+
+  isRosterFull(teamNum: number): boolean {
+    let count = 0;
+    this.rosters[teamNum].forEach(player => {
+      if (player) {
+        count++;
+      }
+    });
+    count += this.benches[teamNum].length;
+    console.log('roster size is ' + count);
+    return count === this.MAX_ROSTER_SIZE;
   }
 
 }
