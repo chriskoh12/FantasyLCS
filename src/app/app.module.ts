@@ -11,6 +11,8 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatCardModule } from '@angular/material/card';
 import { NavComponent } from './nav/nav.component';
 import { MatTabsModule } from '@angular/material/tabs';
+import { CurrentWeekComponent } from './current-week/current-week.component';
+import { FreeAgentsComponent } from './free-agents/free-agents.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +20,8 @@ import { MatTabsModule } from '@angular/material/tabs';
     RosterComponent,
     RostersComponent,
     NavComponent,
+    CurrentWeekComponent,
+    FreeAgentsComponent,
   ],
   imports: [
     BrowserModule,

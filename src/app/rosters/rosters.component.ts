@@ -10,6 +10,8 @@ import { MoveEvent } from '../models/MoveEvent';
 })
 export class RostersComponent implements OnInit {
 
+  MAX_ROSTER_SIZE = 10;
+
   rosters: Player[][] = [
     [
       { name: 'Broken Blade', position: Position.top, team: 'TSM' },
@@ -142,6 +144,11 @@ export class RostersComponent implements OnInit {
   */
   handlePlayerMove(moveEvent: MoveEvent) {
     const { prevTeam, prevSpot, nextTeam, nextSpot } = moveEvent; // destructure moveEvent for easier var names
+
+    // console.log(this.rosters[prevTeam].length + ' ' + this.benches[prevTeam].length);
+    if (this.rosters[nextTeam].length + this.benches[nextTeam].length > this.MAX_ROSTER_SIZE){
+      return;
+    }
 
     if (moveEvent.from === 'roster') {
       if (moveEvent.to === 'roster') { // if moving from roster to roster
