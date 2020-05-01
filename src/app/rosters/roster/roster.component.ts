@@ -10,6 +10,9 @@ import { MoveEvent, PlayerLoc } from '../../models/MoveEvent';
 })
 export class RosterComponent implements OnInit {
 
+  PORTRAIT_HEIGHT = '47px';
+  PORTRAIT_WIDTH = '59.42px';
+
   @Input() team: FantasyTeam;
   @Input() teamNum: number;
 
@@ -20,18 +23,32 @@ export class RosterComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  getPortraitHeight(){
+  getBanner(team: string) {
     return {
-      'height': '47px'
+      'background-image': 'url("../../assets/Banners/' + team + '.png")',
+      'background-size': '420px 47px'
     };
   }
 
-  returnStyle(team: string) {
+  getPortraitWidth(){ // for team position placeholder
     return {
-      'background-image': 'url("../../assets/' + team + '.png")',
-      // 'background-repeat': 'no-repeat',
-      // 'background-size': '300px 58.41px'
+      width: this.PORTRAIT_WIDTH
     };
+  }
+
+  getPortraitHeight(){
+    return {
+      height: this.PORTRAIT_HEIGHT,
+      // 'margin-right': '30px'
+    };
+  }
+
+  getPlayerPicture(player: Player): string {
+    return 'assets/Pictures/' + player.name + '.png';
+  }
+
+  getTeamLogo(teamName: string): string {
+    return 'assets/Logos/' + teamName + '.png';
   }
 
   playerMove(event: CdkDragDrop<[PlayerLoc, number, number]>): void { // emits the indices of the spots that are being moved between

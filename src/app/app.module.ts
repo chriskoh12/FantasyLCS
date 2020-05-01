@@ -8,19 +8,25 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatDividerModule } from '@angular/material/divider';
 import { RostersComponent } from './rosters/rosters.component';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatCardModule } from '@angular/material/card';
+import { NavComponent } from './nav/nav.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     RosterComponent,
     RostersComponent,
+    NavComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     DragDropModule,
-    MatDividerModule
+    MatDividerModule,
+    MatSidenavModule,
+    MatCardModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -12,7 +12,7 @@ export class RostersComponent implements OnInit {
 
   rosters: Player[][] = [
     [
-      { name: 'BrokenBlade', position: Position.top, team: 'TSM' },
+      { name: 'Broken Blade', position: Position.top, team: 'TSM' },
       { name: 'Dardoch', position: Position.jng, team: 'TSM' },
       { name: 'Bjergsen', position: Position.mid, team: 'TSM' },
       { name: 'Kobbe', position: Position.adc, team: 'TSM' },
@@ -52,7 +52,7 @@ export class RostersComponent implements OnInit {
       { name: 'Santorin', position: Position.jng, team: 'FLY' },
       { name: 'PowerOfEvil', position: Position.mid, team: 'FLY' },
       { name: 'WildTurtle', position: Position.adc, team: 'FLY' },
-      { name: 'Ignar', position: Position.sup, team: 'FLY' },
+      { name: 'IgNar', position: Position.sup, team: 'FLY' },
       null,
       { name: 'FlyQuest', position: Position.team, team: 'FLY' }
     ],
@@ -85,7 +85,7 @@ export class RostersComponent implements OnInit {
     ],
     [
       { name: 'Hans Sama', position: Position.adc, team: 'RGE' },
-      { name: 'VandeR', position: Position.sup, team: 'RGE' },
+      { name: 'Vander', position: Position.sup, team: 'RGE' },
       { name: 'Rogue', position: Position.team, team: 'RGE' }
     ],
     [

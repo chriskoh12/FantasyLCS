@@ -1,7 +1,17 @@
   .rosters {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    margin: 10px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  .mat-sidenav-container {
+    height: calc(100% - 51px); /* 50 px + 1 for the divider */
+    background-color: rgb(43, 43, 43);
+  }
+
+  .mat-sidenav {
+    width: 420px;
+    overflow-x: hidden;
+    /* border-style: solid;
+    border-radius: 1px;
+    border-color: #999999; */
   }
