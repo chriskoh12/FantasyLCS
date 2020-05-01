@@ -4,7 +4,6 @@
   }
 
   .mat-sidenav-container {
-    height: calc(100% - 51px); /* 50 px + 1 for the divider */
     background-color: rgb(43, 43, 43);
   }
 
