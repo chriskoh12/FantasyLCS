@@ -56,7 +56,9 @@ export class RosterComponent implements OnInit {
       from: event.previousContainer.data[0],
       to: event.container.data[0],
       prevTeam: event.previousContainer.data[1],
-      prevSpot: event.previousContainer.data.length === 3 ? event.previousContainer.data[2] : event.previousIndex, // is null if coming from bench
+
+      // is null if coming from bench
+      prevSpot: event.previousContainer.data.length === 3 ? event.previousContainer.data[2] : event.previousIndex,
       nextTeam: event.container.data[1],
       nextSpot: event.container.data.length === 3 ? event.container.data[2] : event.currentIndex // is null if going to bench
     };
