@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Player, Position, FantasyTeam } from '../models/FantasyTeam';
 import { transferArrayItem } from '@angular/cdk/drag-drop';
 import { MoveEvent } from '../models/MoveEvent';
+import { TeamService } from '../team.service';
 
 @Component({
   selector: 'app-rosters',
@@ -12,127 +13,16 @@ export class RostersComponent implements OnInit {
 
   MAX_ROSTER_SIZE = 10;
 
-  rosters: Player[][] = [
-    [
-      { name: 'Broken Blade', position: Position.top, team: 'TSM' },
-      { name: 'Dardoch', position: Position.jng, team: 'TSM' },
-      { name: 'Bjergsen', position: Position.mid, team: 'TSM' },
-      { name: 'Kobbe', position: Position.adc, team: 'TSM' },
-      { name: 'Biofrost', position: Position.sup, team: 'TSM' },
-      null,
-      { name: 'Team SoloMid', position: Position.team, team: 'TSM' }
-    ],
-    [
-      { name: 'Dan Dan', position: Position.top, team: 'MSF' },
-      { name: 'Razork', position: Position.jng, team: 'MSF' },
-      { name: 'Febiven', position: Position.mid, team: 'MSF' },
-      { name: 'Bvoy', position: Position.adc, team: 'MSF' },
-      { name: 'Denyk', position: Position.sup, team: 'MSF' },
-      null,
-      { name: 'Misfits', position: Position.team, team: 'MSF' }
-    ],
-    [
-      { name: 'Licorice', position: Position.top, team: 'C9' },
-      { name: 'Blaber', position: Position.jng, team: 'C9' },
-      { name: 'Nisqy', position: Position.mid, team: 'C9' },
-      { name: 'Zven', position: Position.adc, team: 'C9' },
-      { name: 'Vulcan', position: Position.sup, team: 'C9' },
-      null,
-      { name: 'Cloud 9', position: Position.team, team: 'C9' }
-    ],
-    [
-      { name: 'Kumo', position: Position.top, team: 'EG' },
-      { name: 'Svenskeren', position: Position.jng, team: 'EG' },
-      { name: 'Jiizuke', position: Position.mid, team: 'EG' },
-      { name: 'Bang', position: Position.adc, team: 'EG' },
-      { name: 'Zeyzal', position: Position.sup, team: 'EG' },
-      null,
-      { name: 'Evil Geniuses', position: Position.team, team: 'EG' }
-    ],
-    [
-      { name: 'V1per', position: Position.top, team: 'FLY' },
-      { name: 'Santorin', position: Position.jng, team: 'FLY' },
-      { name: 'PowerOfEvil', position: Position.mid, team: 'FLY' },
-      { name: 'WildTurtle', position: Position.adc, team: 'FLY' },
-      { name: 'IgNar', position: Position.sup, team: 'FLY' },
-      null,
-      { name: 'FlyQuest', position: Position.team, team: 'FLY' }
-    ],
-    [
-      { name: 'Ssumday', position: Position.top, team: '100' },
-      { name: 'Meteos', position: Position.jng, team: '100' },
-      { name: 'ry0ma', position: Position.mid, team: '100' },
-      { name: 'Cody Sun', position: Position.adc, team: '100' },
-      { name: 'Stunt', position: Position.sup, team: '100' },
-      null,
-      { name: '100 Thieves', position: Position.team, team: '100' }
-    ]
-  ];
+  teams: FantasyTeam[];
 
-  benches: Player[][] = [
-    [
-      { name: 'Expect', position: Position.top, team: 'XL' },
-      { name: 'Caedrel', position: Position.jng, team: 'XL' },
-      { name: 'Mickey', position: Position.mid, team: 'XL' }
-    ],
-    [
-      { name: 'Patrik', position: Position.adc, team: 'XL' },
-      { name: 'Tore', position: Position.sup, team: 'XL' },
-      { name: 'Excel', position: Position.team, team: 'XL' }
-    ],
-    [
-      { name: 'Finn', position: Position.top, team: 'RGE' },
-      { name: 'Inspired', position: Position.jng, team: 'RGE' },
-      { name: 'Larssen', position: Position.mid, team: 'RGE' }
-    ],
-    [
-      { name: 'Hans Sama', position: Position.adc, team: 'RGE' },
-      { name: 'Vander', position: Position.sup, team: 'RGE' },
-      { name: 'Rogue', position: Position.team, team: 'RGE' }
-    ],
-    [
-      { name: 'Odoamne', position: Position.top, team: 'S04' },
-      { name: 'Lurox', position: Position.jng, team: 'S04' },
-      { name: 'Abbedagge', position: Position.mid, team: 'S04' }
-    ]
-  ];
-
-  teams: FantasyTeam[] = [
-    {
-      name: 'A',
-      coach: 'Chris',
-      roster: this.rosters[0],
-      bench: this.benches[0]
-    },
-    {
-      name: 'B',
-      coach: 'Vasko',
-      roster: this.rosters[1],
-      bench: this.benches[1]
-    },
-    {
-      name: 'c',
-      coach: 'Griffin',
-      roster: this.rosters[2],
-      bench: this.benches[2]
-    },
-    {
-      name: 'c',
-      coach: 'Andrew',
-      roster: this.rosters[3],
-      bench: this.benches[3]
-    },
-    {
-      name: 'c',
-      coach: 'Alex',
-      roster: this.rosters[4],
-      bench: this.benches[4]
-    }
-  ];
-
-  constructor() { }
+  constructor(private teamService: TeamService) { }
 
   ngOnInit(): void {
+    this.getTeams();
+  }
+
+  getTeams(): void{
+    this.teams = this.teamService.getTeams();
   }
 
   /*
@@ -149,54 +39,54 @@ export class RostersComponent implements OnInit {
       if (moveEvent.to === 'roster') { // if moving from roster to roster
         const actionAllowed = this.checkPlayerSwapValid(prevTeam, prevSpot, nextTeam, nextSpot);
         if (actionAllowed === 1) {
-          [this.rosters[prevTeam][prevSpot], this.rosters[nextTeam][nextSpot]]
-            = [this.rosters[nextTeam][nextSpot], this.rosters[prevTeam][prevSpot]];
+          [this.teams[prevTeam].roster[prevSpot], this.teams[nextTeam].roster[nextSpot]]
+            = [this.teams[nextTeam].roster[nextSpot], this.teams[prevTeam].roster[prevSpot]];
         }
         else if (actionAllowed === 0 && !this.isRosterFull(nextTeam)) {
           // move other player to bench
-          transferArrayItem(this.rosters[nextTeam], this.benches[nextTeam], nextSpot, this.benches[nextTeam].length);
-          transferArrayItem(this.rosters[prevTeam], this.rosters[nextTeam], prevSpot, nextSpot); // move player to destination
-          this.rosters[prevTeam].splice(prevSpot, 0, null); // fill the player's previous spot with null player
+          transferArrayItem(this.teams[nextTeam].roster, this.teams[nextTeam].bench, nextSpot, this.teams[nextTeam].bench.length);
+          transferArrayItem(this.teams[prevTeam].roster, this.teams[nextTeam].roster, prevSpot, nextSpot); // move player to destination
+          this.teams[prevTeam].roster.splice(prevSpot, 0, null); // fill the player's previous spot with null player
         }
       }
 
       else { // if moving from roster to bench
         if (!this.isRosterFull(nextTeam)){
-          transferArrayItem(this.rosters[prevTeam], this.benches[nextTeam], prevSpot, nextSpot);
-          this.rosters[prevTeam].splice(prevSpot, 0, null);
+          transferArrayItem(this.teams[prevTeam].roster, this.teams[nextTeam].bench, prevSpot, nextSpot);
+          this.teams[prevTeam].roster.splice(prevSpot, 0, null);
         }
       }
     }
 
     else { // from bench
       if (moveEvent.to === 'roster') { // if moving from bench to roster
-        const playerPos = this.benches[prevTeam][prevSpot].position; // position of bench player being moved
+        const playerPos = this.teams[prevTeam].bench[prevSpot].position; // position of bench player being moved
         const destPos = nextSpot; // position of destination role
         const moveAllowed = this.checkPlayerValid(playerPos, destPos);
         if (moveAllowed) {
-          if (this.rosters[nextTeam][nextSpot]) { // if there is a player in the destination spot, swap them
-            [this.rosters[nextTeam][nextSpot], this.benches[prevTeam][prevSpot]]
-              = [this.benches[prevTeam][prevSpot], this.rosters[nextTeam][nextSpot]];
+          if (this.teams[nextTeam].roster[nextSpot]) { // if there is a player in the destination spot, swap them
+            [this.teams[nextTeam].roster[nextSpot], this.teams[prevTeam].bench[prevSpot]]
+              = [this.teams[prevTeam].bench[prevSpot], this.teams[nextTeam].roster[nextSpot]];
           }
           else { // if the destination spot is blank, just put them in
             if (!this.isRosterFull(nextTeam)){
-              transferArrayItem(this.benches[prevTeam], this.rosters[nextTeam], prevSpot, nextSpot);
-              this.rosters[nextTeam].splice(destPos + 1, 1);
+              transferArrayItem(this.teams[prevTeam].bench, this.teams[nextTeam].roster, prevSpot, nextSpot);
+              this.teams[nextTeam].roster.splice(destPos + 1, 1);
             }
           }
         }
       }
       else { // if moving from bench to bench
         if (!this.isRosterFull(nextTeam)){
-          transferArrayItem(this.benches[prevTeam], this.benches[nextTeam], prevSpot, nextSpot);
+          transferArrayItem(this.teams[prevTeam].bench, this.teams[nextTeam].bench, prevSpot, nextSpot);
         }
       }
     }
   }
 
   checkPlayerSwapValid(prevTeam: number, prevSpot: number, nextTeam: number, nextSpot: number): number {
-    const firstPlayerPos = this.rosters[prevTeam][prevSpot].position;
-    const secondPlayerPos = this.rosters[nextTeam][nextSpot] ? this.rosters[nextTeam][nextSpot].position : null;
+    const firstPlayerPos = this.teams[prevTeam].roster[prevSpot].position;
+    const secondPlayerPos = this.teams[nextTeam].roster[nextSpot] ? this.teams[nextTeam].roster[nextSpot].position : null;
     const allowMove: boolean = this.checkPlayerValid(firstPlayerPos, Position.top + nextSpot);
     const allowSwap: boolean = this.checkPlayerValid(secondPlayerPos, Position.top + prevSpot);
     if (allowMove) {
@@ -220,12 +110,12 @@ export class RostersComponent implements OnInit {
 
   isRosterFull(teamNum: number): boolean {
     let count = 0;
-    this.rosters[teamNum].forEach(player => {
+    this.teams[teamNum].roster.forEach(player => {
       if (player) {
         count++;
       }
     });
-    count += this.benches[teamNum].length;
+    count += this.teams[teamNum].bench.length;
     console.log('roster size is ' + count);
     return count === this.MAX_ROSTER_SIZE;
   }

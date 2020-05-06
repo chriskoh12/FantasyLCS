@@ -1,0 +1,17 @@
+.free-agents-tab {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+}
+
+.mat-form-field-label {
+  font-size: 25px;
+}
+
+/* .selected-name {
+  font-size: 25px;
+} */
+
+.selected-roster {
+  padding: 10px;
+  align-self: center;
+}

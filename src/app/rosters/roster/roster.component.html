@@ -1,5 +1,5 @@
 <!-- <mat-card class="roster-card"> -->
-    <h1 style="margin-bottom: 0px; padding-left: 10px;">{{team.coach}}</h1>
+    <!-- <h1 style="margin-bottom: 0px; padding-left: 10px;">{{team.coach}}</h1> -->
 
     <div cdkDropList class="example-list" *ngFor="let player of team.roster; let positionNum = index"
         [cdkDropListEnterPredicate]="positionPredicate(positionNum)"

@@ -1,8 +1,11 @@
 <mat-sidenav-container>
     <mat-sidenav-content>
         <div cdkDropListGroup class="rosters">
-            <app-roster *ngFor="let team of teams; let teamNum = index" [team]="team" [teamNum]="teamNum"
+            <div class="roster" *ngFor="let team of teams; let teamNum = index">
+                <h1 class="coach-name">{{team.coach}}</h1>
+                <app-roster [team]="team" [teamNum]="teamNum"
                 (playerMoved)="handlePlayerMove($event)"></app-roster>
+            </div>
         </div>
     </mat-sidenav-content>
     <mat-sidenav opened mode="side" position="end">

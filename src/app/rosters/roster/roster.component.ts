@@ -65,6 +65,7 @@ export class RosterComponent implements OnInit {
     this.playerMoved.emit(moveEvent);
   }
 
+  // takes in the number of the position and returns a function that only accepts that role
   positionPredicate(positionNum: number): (eventData: CdkDrag<Position>) => boolean{
     // console.log(positionNum);
     return (eventData => {

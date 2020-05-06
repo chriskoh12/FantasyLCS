@@ -2,17 +2,20 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
+import { NavComponent } from './nav/nav.component';
+import { RostersComponent } from './rosters/rosters.component';
 import { RosterComponent } from './rosters/roster/roster.component';
+import { CurrentWeekComponent } from './current-week/current-week.component';
+import { FreeAgentsComponent } from './free-agents/free-agents.component';
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatDividerModule } from '@angular/material/divider';
-import { RostersComponent } from './rosters/rosters.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatCardModule } from '@angular/material/card';
-import { NavComponent } from './nav/nav.component';
 import { MatTabsModule } from '@angular/material/tabs';
-import { CurrentWeekComponent } from './current-week/current-week.component';
-import { FreeAgentsComponent } from './free-agents/free-agents.component';
+import { MatSelectModule } from '@angular/material/select';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -30,7 +33,9 @@ import { FreeAgentsComponent } from './free-agents/free-agents.component';
     MatDividerModule,
     MatSidenavModule,
     MatCardModule,
-    MatTabsModule
+    MatTabsModule,
+    MatSelectModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
