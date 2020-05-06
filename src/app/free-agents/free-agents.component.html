@@ -1,12 +1,16 @@
 <div class="free-agents-tab" cdkDropListGroup>
     <div class="selected-roster">
-        <mat-form-field >
+        <mat-form-field>
             <mat-select style="font-size: 25px;" [(value)]="selectedTeam">
-                <mat-option style="font-size: 15px;" *ngFor="let team of teams" [value]="team">{{team.coach}}</mat-option>
+                <mat-option style="font-size: 15px;" *ngFor="let team of teams" [value]="team">{{team.coach}}
+                </mat-option>
             </mat-select>
         </mat-form-field>
-        <app-roster [team]="selectedTeam" [teamNum]="getTeamNum(selectedTeam)" (playerMoved)="handlePlayerMove($event)">
-        </app-roster>
+        <mat-card style="height: fit-content;">
+            <app-roster [team]="selectedTeam" [teamNum]="getTeamNum(selectedTeam)"
+                (playerMoved)="handlePlayerMove($event)">
+            </app-roster>
+        </mat-card>
     </div>
     <div class="free-agents">
 
