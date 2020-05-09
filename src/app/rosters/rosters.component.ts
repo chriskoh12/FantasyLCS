@@ -22,7 +22,7 @@ export class RostersComponent implements OnInit {
   }
 
   getTeams(): void{
-    this.teams = this.teamService.getTeams();
+    this.teams = this.teamService.getFantasyTeams();
   }
 
   /*

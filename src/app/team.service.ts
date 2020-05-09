@@ -91,7 +91,7 @@ export class TeamService {
     ]
   ];
 
-  teams: FantasyTeam[] = [
+  fantasyTeams: FantasyTeam[] = [
     {
       name: 'A',
       coach: 'Chris',
@@ -126,8 +126,8 @@ export class TeamService {
 
   constructor() { }
 
-  getTeams(): FantasyTeam[]{
-    return this.teams;
+  getFantasyTeams(): FantasyTeam[]{
+    return this.fantasyTeams;
   }
 
 }

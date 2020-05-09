@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
@@ -35,7 +36,8 @@ import { MatButtonModule } from '@angular/material/button';
     MatCardModule,
     MatTabsModule,
     MatSelectModule,
-    MatButtonModule
+    MatButtonModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

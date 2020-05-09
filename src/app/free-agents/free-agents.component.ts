@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FantasyTeam } from '../models/FantasyTeam';
+import { FantasyTeam, Team } from '../models/FantasyTeam';
 import { TeamService } from '../team.service';
+import { SortBy } from '../models/SortBy';
 
 @Component({
   selector: 'app-free-agents',
@@ -9,27 +10,44 @@ import { TeamService } from '../team.service';
 })
 export class FreeAgentsComponent implements OnInit {
 
-  teams: FantasyTeam[];
-  selectedTeam: FantasyTeam;
+  teamsList: Team[] = ['TL', 'TSM', 'C9', 'CLG', '100', 'FLY', 'GGS', 'IMT', 'DIG', 'EG',
+  'G2', 'FNC', 'OG', 'VIT', 'MSF', 'S04', 'MAD', 'SK', 'XL', 'RGE'];
+
+  rolesList: string[] = ['Top', 'Jungle', 'Mid', 'ADC', 'Sup', 'Flex', 'Team'];
+
+  fantasyTeams: FantasyTeam[];
+  selectedFantasyTeam: FantasyTeam;
+  sortBy: SortBy = 'alpha';
+  owned = 'all';
+
+  selectedTeams: Team[];
+  selectedRoles: string[];
 
   constructor(private teamService: TeamService) { }
 
   ngOnInit(): void {
-    this.getTeams();
+    this.getFantasyTeams();
+    this.selectedTeams = ['TL', 'TSM', 'C9', 'CLG', '100', 'FLY', 'GGS', 'IMT', 'DIG', 'EG',
+    'G2', 'FNC', 'OG', 'VIT', 'MSF', 'S04', 'MAD', 'SK', 'XL', 'RGE'];
+    this.selectedRoles = ['Top', 'Jungle', 'Mid', 'ADC', 'Sup', 'Flex', 'Team'];
     // console.log(this.selectedTeam);
   }
 
-  getTeams(): void{
-    this.teams = this.teamService.getTeams();
-    this.selectedTeam = this.teams[0];
+  getFantasyTeams(): void{
+    this.fantasyTeams = this.teamService.getFantasyTeams();
+    this.selectedFantasyTeam = this.fantasyTeams[0];
   }
 
   getTeamNum(team: FantasyTeam): number{
-    return this.teams.findIndex(item => item.name === team.name);
+    return this.fantasyTeams.findIndex(item => item.name === team.name);
   }
 
   handlePlayerMove(event){
     console.log(event);
+  }
+
+  comparer(s1: string, s2: string): boolean {
+    return s1 === s2;
   }
 
 }
