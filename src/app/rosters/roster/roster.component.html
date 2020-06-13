@@ -11,8 +11,9 @@
             <ng-template #teamSpace>
                 <div style="margin-left: 10px;"></div>
             </ng-template>
-            {{player.name}}
-            <img class="roster-logo" [src]="getTeamLogo(player.team)">
+            <div class="player-name">{{player.name}}</div>
+            <img class="banner-image" *ngIf="player.position !== 6" [src]="getPlayerPosition(player.position)" [alt]="getPlayerPosition(player.position)">
+            <img class="banner-image" [src]="getTeamLogo(player.team)" [alt]="getTeamLogo(player.team)">
         </div>
         <ng-template #blankPlaceholder>
             <div class="example-box" cdkDrag [cdkDragDisabled]="true">

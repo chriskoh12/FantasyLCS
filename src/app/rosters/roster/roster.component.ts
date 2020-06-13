@@ -51,6 +51,23 @@ export class RosterComponent implements OnInit {
     return 'assets/Logos/' + teamName + '.png';
   }
 
+  getPlayerPosition(position: Position): string{
+    switch (position){
+      case Position.top:
+        return 'assets/Positions/top.png';
+      case Position.jng:
+        return 'assets/Positions/jng.png';
+      case Position.mid:
+        return 'assets/Positions/mid.png';
+      case Position.adc:
+        return 'assets/Positions/adc.png';
+      case Position.sup:
+        return 'assets/Positions/sup.png';
+      default:
+        return;
+    }
+  }
+
   playerMove(event: CdkDragDrop<[PlayerLoc, number, number]>): void { // emits the indices of the spots that are being moved between
     const moveEvent: MoveEvent = {
       from: event.previousContainer.data[0],

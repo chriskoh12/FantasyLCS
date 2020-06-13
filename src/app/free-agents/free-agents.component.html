@@ -24,13 +24,13 @@
         <mat-form-field>
             <mat-label>Team:</mat-label>
             <mat-select [(ngModel)]="selectedTeams" multiple>
-                <mat-option *ngFor="let team of teamsList" [value]="team">{{team}}</mat-option>
+                <mat-option style="color: white" *ngFor="let team of teamsList" [value]="team">{{team}}</mat-option>
             </mat-select>
         </mat-form-field>
         <mat-form-field>
             <mat-label>Role:</mat-label>
             <mat-select [(ngModel)]="selectedRoles" multiple>
-                <mat-option *ngFor="let role of rolesList" [value]="role">{{role}}</mat-option>
+                <mat-option style="color: white" *ngFor="let role of rolesList" [value]="role">{{role}}</mat-option>
             </mat-select>
         </mat-form-field>
         <mat-form-field>

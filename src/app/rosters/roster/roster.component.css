@@ -73,9 +73,12 @@
   padding: 0px;
 }
 
-.roster-logo {
-  margin-left: auto;
-  height: 30px;
+.banner-image {
+  height: 70%;
+}
+
+.player-name {
+  margin-right: auto;
 }
 
 .cdk-drag-preview {
