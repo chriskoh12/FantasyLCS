@@ -69,6 +69,7 @@ export class RosterComponent implements OnInit {
   }
 
   playerMove(event: CdkDragDrop<[PlayerLoc, number, number]>): void { // emits the indices of the spots that are being moved between
+    console.log(event);
     const moveEvent: MoveEvent = {
       from: event.previousContainer.data[0],
       to: event.container.data[0],

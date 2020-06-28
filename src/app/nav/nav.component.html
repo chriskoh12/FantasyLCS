@@ -1,5 +1,12 @@
 <mat-tab-group color="accent" backgroundColor="primary" dynamicHeight="true" mat-align-tabs="center">
-    <mat-tab label="Rosters"> <app-rosters></app-rosters> </mat-tab>
-    <mat-tab label="Current Week"> <app-current-week></app-current-week> </mat-tab>
-    <mat-tab label="Free Agents"> <app-free-agents></app-free-agents> </mat-tab>
+    <mat-tab label="Rosters">
+        <app-rosters [teams]="teams" (playerMoved)="handlePlayerMove($event)"></app-rosters>
+    </mat-tab>
+    <mat-tab label="Current Week">
+        <app-current-week></app-current-week>
+    </mat-tab>
+    <mat-tab label="Free Agents">
+        <app-free-agents></app-free-agents>
+    </mat-tab>
+    <div>save</div>
 </mat-tab-group>

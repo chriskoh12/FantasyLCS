@@ -12,8 +12,8 @@
             </app-roster>
         </mat-card>
     </div>
-    <div class="free-agents">
-        <mat-form-field>
+    <div class="free-agents-sort">
+        <mat-form-field class="form-field">
             <mat-label>Sort By:</mat-label>
             <mat-select [(value)]="sortBy">
                 <mat-option value="alpha">Alphabetical</mat-option>
@@ -21,19 +21,19 @@
                 <mat-option value="proj">Projected Points</mat-option>
             </mat-select>
         </mat-form-field>
-        <mat-form-field>
+        <mat-form-field class="form-field">
             <mat-label>Team:</mat-label>
             <mat-select [(ngModel)]="selectedTeams" multiple>
                 <mat-option style="color: white" *ngFor="let team of teamsList" [value]="team">{{team}}</mat-option>
             </mat-select>
         </mat-form-field>
-        <mat-form-field>
+        <mat-form-field class="form-field">
             <mat-label>Role:</mat-label>
             <mat-select [(ngModel)]="selectedRoles" multiple>
                 <mat-option style="color: white" *ngFor="let role of rolesList" [value]="role">{{role}}</mat-option>
             </mat-select>
         </mat-form-field>
-        <mat-form-field>
+        <mat-form-field class="form-field">
             <mat-label>Owned:</mat-label>
             <mat-select [(value)]="owned">
                 <mat-option value="all">All</mat-option>
@@ -41,5 +41,18 @@
                 <mat-option value="available">Available</mat-option>
             </mat-select>
         </mat-form-field>
+        <div class="free-agents-container">
+            <div cdkDropList *ngFor="let player of freeAgents" [cdkDropListEnterPredicate]="noMoveIntoFreeAgents" [cdkDropListData]="['free', player.position]">
+                <div class="example-box" [ngStyle]="getBanner(player.team)" cdkDrag>
+                    <img *ngIf="player.position !== 6; else teamSpace" [src]="getPlayerPicture(player)"
+                        [alt]="getPlayerPicture(player)" [style]="getPortraitHeight()">
+                    <ng-template #teamSpace>
+                        <div style="margin-left: 10px;"></div>
+                    </ng-template>
+                    <div class="player-name">{{player.name}}</div>
+                    <img class="banner-image" [src]="getTeamLogo(player.team)" [alt]="getTeamLogo(player.team)">
+                </div>
+            </div>
+        </div>
     </div>
 </div>

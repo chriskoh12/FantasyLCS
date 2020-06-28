@@ -63,6 +63,63 @@ export class TeamService {
     ]
   ];
 
+  freeAgentsArray: Player[] = [
+    { name: 'V1per', position: Position.top, team: 'FLY' },
+    { name: 'Santorin', position: Position.jng, team: 'FLY' },
+    { name: 'PowerOfEvil', position: Position.mid, team: 'FLY' },
+    { name: 'WildTurtle', position: Position.adc, team: 'FLY' },
+    { name: 'IgNar', position: Position.sup, team: 'FLY' },
+    { name: 'FlyQuest', position: Position.team, team: 'FLY' },
+    { name: 'V1per', position: Position.top, team: 'FLY' },
+    { name: 'Santorin', position: Position.jng, team: 'FLY' },
+    { name: 'PowerOfEvil', position: Position.mid, team: 'FLY' },
+    { name: 'WildTurtle', position: Position.adc, team: 'FLY' },
+    { name: 'IgNar', position: Position.sup, team: 'FLY' },
+    { name: 'FlyQuest', position: Position.team, team: 'FLY' },
+    { name: 'V1per', position: Position.top, team: 'FLY' },
+    { name: 'Santorin', position: Position.jng, team: 'FLY' },
+    { name: 'PowerOfEvil', position: Position.mid, team: 'FLY' },
+    { name: 'WildTurtle', position: Position.adc, team: 'FLY' },
+    { name: 'IgNar', position: Position.sup, team: 'FLY' },
+    { name: 'FlyQuest', position: Position.team, team: 'FLY' },
+    { name: 'V1per', position: Position.top, team: 'FLY' },
+    { name: 'Santorin', position: Position.jng, team: 'FLY' },
+    { name: 'PowerOfEvil', position: Position.mid, team: 'FLY' },
+    { name: 'WildTurtle', position: Position.adc, team: 'FLY' },
+    { name: 'IgNar', position: Position.sup, team: 'FLY' },
+    { name: 'FlyQuest', position: Position.team, team: 'FLY' },
+    { name: 'V1per', position: Position.top, team: 'FLY' },
+    { name: 'Santorin', position: Position.jng, team: 'FLY' },
+    { name: 'PowerOfEvil', position: Position.mid, team: 'FLY' },
+    { name: 'WildTurtle', position: Position.adc, team: 'FLY' },
+    { name: 'IgNar', position: Position.sup, team: 'FLY' },
+    { name: 'FlyQuest', position: Position.team, team: 'FLY' },
+    { name: 'V1per', position: Position.top, team: 'FLY' },
+    { name: 'Santorin', position: Position.jng, team: 'FLY' },
+    { name: 'PowerOfEvil', position: Position.mid, team: 'FLY' },
+    { name: 'WildTurtle', position: Position.adc, team: 'FLY' },
+    { name: 'IgNar', position: Position.sup, team: 'FLY' },
+    { name: 'FlyQuest', position: Position.team, team: 'FLY' },
+    { name: 'V1per', position: Position.top, team: 'FLY' },
+    { name: 'Santorin', position: Position.jng, team: 'FLY' },
+    { name: 'PowerOfEvil', position: Position.mid, team: 'FLY' },
+    { name: 'WildTurtle', position: Position.adc, team: 'FLY' },
+    { name: 'IgNar', position: Position.sup, team: 'FLY' },
+    { name: 'FlyQuest', position: Position.team, team: 'FLY' },
+    { name: 'V1per', position: Position.top, team: 'FLY' },
+    { name: 'Santorin', position: Position.jng, team: 'FLY' },
+    { name: 'PowerOfEvil', position: Position.mid, team: 'FLY' },
+    { name: 'WildTurtle', position: Position.adc, team: 'FLY' },
+    { name: 'IgNar', position: Position.sup, team: 'FLY' },
+    { name: 'FlyQuest', position: Position.team, team: 'FLY' },
+    { name: 'V1per', position: Position.top, team: 'FLY' },
+    { name: 'Santorin', position: Position.jng, team: 'FLY' },
+    { name: 'PowerOfEvil', position: Position.mid, team: 'FLY' },
+    { name: 'WildTurtle', position: Position.adc, team: 'FLY' },
+    { name: 'IgNar', position: Position.sup, team: 'FLY' },
+    { name: 'FlyQuest', position: Position.team, team: 'FLY' }
+  ];
+
   benches: Player[][] = [
     [
       { name: 'Expect', position: Position.top, team: 'XL' },
@@ -126,8 +183,12 @@ export class TeamService {
 
   constructor() { }
 
-  getFantasyTeams(): FantasyTeam[]{
+  getFantasyTeams(): FantasyTeam[] {
     return this.fantasyTeams;
+  }
+
+  getFreeAgents(): Player[] {
+    return this.freeAgentsArray;
   }
 
 }
