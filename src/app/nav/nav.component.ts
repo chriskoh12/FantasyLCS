@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TeamService } from '../team.service';
-import { FantasyTeam, Position } from '../models/FantasyTeam';
-import { MoveEvent } from '../models/MoveEvent';
+import { FantasyTeam, Position, Player } from '../models/FantasyTeam';
+import { PlayerMoveEvent } from '../models/MoveEvents';
 import { transferArrayItem } from '@angular/cdk/drag-drop';
 
 @Component({
@@ -15,14 +15,21 @@ export class NavComponent implements OnInit {
 
   teams: FantasyTeam[];
 
+  freeAgents: Player[];
+
   constructor(private teamService: TeamService) { }
 
   ngOnInit(): void {
     this.getTeams();
+    this.getFreeAgents();
   }
 
   getTeams(): void{
     this.teams = this.teamService.getFantasyTeams();
+  }
+
+  getFreeAgents(): void{
+    this.freeAgents = this.teamService.getFreeAgents();
   }
 
   /*
@@ -32,11 +39,32 @@ export class NavComponent implements OnInit {
   bench to roster (check if player can fit in slot, if so then move them and splice out the spot where they were)
   bench to bench (just transfer the player to the other array)
   */
-  handlePlayerMove(moveEvent: MoveEvent) { // TODO refactor for better organization
-    const { prevTeam, prevSpot, nextTeam, nextSpot } = moveEvent; // destructure moveEvent for easier var names
+  handlePlayerMove(playerMoveEvent: PlayerMoveEvent) { // TODO refactor for better organization
+    console.log('received playerMoveEvent');
+    console.log(playerMoveEvent);
+    const { prevTeam, prevSpot, nextTeam, nextSpot } = playerMoveEvent; // destructure rosterMoveEvent for easier var names
 
-    if (moveEvent.from === 'roster') {
-      if (moveEvent.to === 'roster') { // if moving from roster to roster
+    // refactor to separate into free agent move and roster move
+    if (playerMoveEvent.from === 'free'){
+      // // get the position of the player
+      // const playerPosition: Position = this.freeAgents[prevSpot].position;
+      if (playerMoveEvent.to === 'roster' && !this.isRosterFull(nextTeam)) {
+        if (!this.teams[nextTeam].roster[nextSpot]){
+          this.teams[nextTeam].roster.splice(nextSpot, 1);
+          transferArrayItem(this.freeAgents, this.teams[nextTeam].roster, prevSpot, nextSpot);
+        }
+        else {
+          transferArrayItem(this.teams[nextTeam].roster, this.teams[nextTeam].bench, nextSpot, this.teams[nextTeam].bench.length);
+          transferArrayItem(this.freeAgents, this.teams[nextTeam].roster, prevSpot, nextSpot);
+        }
+      }
+      else if (playerMoveEvent.to === 'bench' && !this.isRosterFull(nextTeam)){
+
+      }
+    }
+
+    else if (playerMoveEvent.from === 'roster') {
+      if (playerMoveEvent.to === 'roster') { // if moving from roster to roster
         const actionAllowed = this.checkPlayerSwapValid(prevTeam, prevSpot, nextTeam, nextSpot);
         if (actionAllowed === 1) {
           [this.teams[prevTeam].roster[prevSpot], this.teams[nextTeam].roster[nextSpot]]
@@ -51,7 +79,7 @@ export class NavComponent implements OnInit {
       }
 
       else { // if moving from roster to bench
-        if (!this.isRosterFull(nextTeam)){
+        if (!this.isRosterFull(nextTeam) || prevTeam === nextTeam){
           transferArrayItem(this.teams[prevTeam].roster, this.teams[nextTeam].bench, prevSpot, nextSpot);
           this.teams[prevTeam].roster.splice(prevSpot, 0, null);
         }
@@ -59,7 +87,7 @@ export class NavComponent implements OnInit {
     }
 
     else { // from bench
-      if (moveEvent.to === 'roster') { // if moving from bench to roster
+      if (playerMoveEvent.to === 'roster') { // if moving from bench to roster
         const playerPos = this.teams[prevTeam].bench[prevSpot].position; // position of bench player being moved
         const destPos = nextSpot; // position of destination role
         const moveAllowed = this.checkPlayerValid(playerPos, destPos);
@@ -69,7 +97,7 @@ export class NavComponent implements OnInit {
               = [this.teams[prevTeam].bench[prevSpot], this.teams[nextTeam].roster[nextSpot]];
           }
           else { // if the destination spot is blank, just put them in
-            if (!this.isRosterFull(nextTeam)){
+            if (!this.isRosterFull(nextTeam) || prevTeam === nextTeam){
               transferArrayItem(this.teams[prevTeam].bench, this.teams[nextTeam].roster, prevSpot, nextSpot);
               this.teams[nextTeam].roster.splice(destPos + 1, 1);
             }
@@ -77,7 +105,7 @@ export class NavComponent implements OnInit {
         }
       }
       else { // if moving from bench to bench
-        if (!this.isRosterFull(nextTeam)){
+        if (!this.isRosterFull(nextTeam) || prevTeam === nextTeam){
           transferArrayItem(this.teams[prevTeam].bench, this.teams[nextTeam].bench, prevSpot, nextSpot);
         }
       }
@@ -89,6 +117,7 @@ export class NavComponent implements OnInit {
     const secondPlayerPos = this.teams[nextTeam].roster[nextSpot] ? this.teams[nextTeam].roster[nextSpot].position : null;
     const allowMove: boolean = this.checkPlayerValid(firstPlayerPos, Position.top + nextSpot);
     const allowSwap: boolean = this.checkPlayerValid(secondPlayerPos, Position.top + prevSpot);
+    // refactor: change to enum maybe?
     if (allowMove) {
       if (allowSwap) {
         return 1; // if players can be swapped
@@ -119,5 +148,4 @@ export class NavComponent implements OnInit {
     console.log('roster size is ' + count);
     return count === this.MAX_ROSTER_SIZE;
   }
-
 }

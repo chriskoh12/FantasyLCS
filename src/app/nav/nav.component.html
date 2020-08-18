@@ -6,7 +6,7 @@
         <app-current-week></app-current-week>
     </mat-tab>
     <mat-tab label="Free Agents">
-        <app-free-agents></app-free-agents>
+        <app-free-agents [freeAgents]="freeAgents" [fantasyTeams]="teams" (playerMoved)="handlePlayerMove($event)"></app-free-agents>
     </mat-tab>
     <div>save</div>
 </mat-tab-group>

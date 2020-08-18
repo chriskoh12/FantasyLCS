@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Player, Position, FantasyTeam } from './models/FantasyTeam';
+import { Player, Position, FantasyTeam, Team } from './models/FantasyTeam';
 
 @Injectable({
   providedIn: 'root'
@@ -63,7 +63,16 @@ export class TeamService {
     ]
   ];
 
+  teamsList: Team[] = ['TL', 'TSM', 'C9', 'CLG', '100', 'FLY', 'GGS', 'IMT', 'DIG', 'EG',
+  'G2', 'FNC', 'OG', 'VIT', 'MSF', 'S04', 'MAD', 'SK', 'XL', 'RGE'];
+
   freeAgentsArray: Player[] = [
+    { name: 'V1per', position: Position.top, team: 'FLY' },
+    { name: 'Santorin', position: Position.jng, team: 'FLY' },
+    { name: 'PowerOfEvil', position: Position.mid, team: 'FLY' },
+    { name: 'WildTurtle', position: Position.adc, team: 'FLY' },
+    { name: 'IgNar', position: Position.sup, team: 'FLY' },
+    { name: 'FlyQuest', position: Position.team, team: 'FLY' },
     { name: 'V1per', position: Position.top, team: 'FLY' },
     { name: 'Santorin', position: Position.jng, team: 'FLY' },
     { name: 'PowerOfEvil', position: Position.mid, team: 'FLY' },
@@ -162,19 +171,19 @@ export class TeamService {
       bench: this.benches[1]
     },
     {
-      name: 'c',
+      name: 'C',
       coach: 'Griffin',
       roster: this.rosters[2],
       bench: this.benches[2]
     },
     {
-      name: 'c',
+      name: 'D',
       coach: 'Andrew',
       roster: this.rosters[3],
       bench: this.benches[3]
     },
     {
-      name: 'c',
+      name: 'E',
       coach: 'Alex',
       roster: this.rosters[4],
       bench: this.benches[4]
@@ -191,4 +200,7 @@ export class TeamService {
     return this.freeAgentsArray;
   }
 
+  getTeamsList(): Team[] {
+    return this.teamsList;
+  }
 }

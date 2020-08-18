@@ -1,7 +1,7 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { Player, Position, FantasyTeam } from '../models/FantasyTeam';
 import { transferArrayItem } from '@angular/cdk/drag-drop';
-import { MoveEvent } from '../models/MoveEvent';
+import { PlayerMoveEvent } from '../models/MoveEvents';
 import { TeamService } from '../team.service';
 
 @Component({
@@ -15,15 +15,15 @@ export class RostersComponent implements OnInit {
 
   @Input() teams: FantasyTeam[];
 
-  @Output() playerMoved = new EventEmitter<MoveEvent>();
+  @Output() playerMoved = new EventEmitter<PlayerMoveEvent>();
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  handlePlayerMove(moveEvent: MoveEvent) {
-    this.playerMoved.emit(moveEvent);
+  handlePlayerMove(playerMoveEvent: PlayerMoveEvent) {
+    this.playerMoved.emit(playerMoveEvent);
   }
 
 }

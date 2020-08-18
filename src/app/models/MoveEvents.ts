@@ -1,4 +1,4 @@
-export interface MoveEvent {
+export interface PlayerMoveEvent {
     from: PlayerLoc;
     to: PlayerLoc;
     prevTeam: number;
@@ -7,4 +7,4 @@ export interface MoveEvent {
     nextSpot: number;
 }
 
-export type PlayerLoc = 'roster' | 'bench';
+export type PlayerLoc = 'roster' | 'bench' | 'free';

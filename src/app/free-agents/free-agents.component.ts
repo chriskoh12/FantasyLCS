@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FantasyTeam, Team, Player } from '../models/FantasyTeam';
 import { TeamService } from '../team.service';
 import { SortBy } from '../models/SortBy';
+import { PlayerMoveEvent } from '../models/MoveEvents';
+import { CdkDragDrop } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-free-agents',
@@ -13,29 +15,28 @@ export class FreeAgentsComponent implements OnInit {
   PORTRAIT_HEIGHT = '47px';
   PORTRAIT_WIDTH = '59.42px';
 
-  teamsList: Team[] = ['TL', 'TSM', 'C9', 'CLG', '100', 'FLY', 'GGS', 'IMT', 'DIG', 'EG',
-  'G2', 'FNC', 'OG', 'VIT', 'MSF', 'S04', 'MAD', 'SK', 'XL', 'RGE'];
+  @Input() fantasyTeams: FantasyTeam[];
+  @Input() freeAgents: Player[];
 
+  @Output() playerMoved = new EventEmitter<PlayerMoveEvent>();
+
+
+  teamsList: Team[];
   rolesList: string[] = ['Top', 'Jungle', 'Mid', 'ADC', 'Sup', 'Flex', 'Team'];
-
-  fantasyTeams: FantasyTeam[];
   selectedFantasyTeam: FantasyTeam;
   sortBy: SortBy = 'alpha';
   owned = 'all';
 
   selectedTeams: Team[];
   selectedRoles: string[];
-  freeAgents: Player[];
 
   constructor(private teamService: TeamService) { }
 
   ngOnInit(): void {
-    this.getFantasyTeams();
-    this.getFreeAgents();
-    this.selectedTeams = ['TL', 'TSM', 'C9', 'CLG', '100', 'FLY', 'GGS', 'IMT', 'DIG', 'EG',
-    'G2', 'FNC', 'OG', 'VIT', 'MSF', 'S04', 'MAD', 'SK', 'XL', 'RGE'];
+    this.getTeamsList();
+    this.selectedTeams = this.teamsList;
+    this.selectedFantasyTeam = this.fantasyTeams[0];
     this.selectedRoles = ['Top', 'Jungle', 'Mid', 'ADC', 'Sup', 'Flex', 'Team'];
-    console.log(this.freeAgents);
   }
 
   getBanner(team: string) {
@@ -66,21 +67,14 @@ export class FreeAgentsComponent implements OnInit {
     return 'assets/Logos/' + teamName + '.png';
   }
 
-  getFantasyTeams(): void{
-    this.fantasyTeams = this.teamService.getFantasyTeams();
-    this.selectedFantasyTeam = this.fantasyTeams[0];
+    getTeamsList(): void{
+    this.teamsList = this.teamService.getTeamsList();
   }
 
-  getFreeAgents(): void{
-    this.freeAgents = this.teamService.getFreeAgents();
-  }
-
+  // gets given fantasyTeam position in the fantasyTeams array by finding the first team name that matches the given team's name
+  // each team should have a unique name
   getTeamNum(team: FantasyTeam): number{
     return this.fantasyTeams.findIndex(item => item.name === team.name);
-  }
-
-  handlePlayerMove(event){
-    console.log(event);
   }
 
   comparer(s1: string, s2: string): boolean {
@@ -89,6 +83,10 @@ export class FreeAgentsComponent implements OnInit {
 
   noMoveIntoFreeAgents(){
     return false;
+  }
+
+  handlePlayerMove(playerMoveEvent: PlayerMoveEvent){
+    this.playerMoved.emit(playerMoveEvent);
   }
 
 }
