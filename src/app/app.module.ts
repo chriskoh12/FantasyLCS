@@ -18,6 +18,12 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 
+import { AmplifyUIAngularModule } from '@aws-amplify/ui-angular';
+import Amplify from 'aws-amplify';
+import awsconfig from '../aws-exports';
+
+Amplify.configure(awsconfig);
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,6 +34,7 @@ import { MatButtonModule } from '@angular/material/button';
     FreeAgentsComponent,
   ],
   imports: [
+    AmplifyUIAngularModule,
     BrowserModule,
     BrowserAnimationsModule,
     DragDropModule,
