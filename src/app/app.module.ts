@@ -1,22 +1,50 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { RosterComponent } from './roster/roster.component';
+import { NavComponent } from './nav/nav.component';
+import { RostersComponent } from './rosters/rosters.component';
+import { RosterComponent } from './rosters/roster/roster.component';
+import { CurrentWeekComponent } from './current-week/current-week.component';
+import { FreeAgentsComponent } from './free-agents/free-agents.component';
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatCardModule } from '@angular/material/card';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatSelectModule } from '@angular/material/select';
+import { MatButtonModule } from '@angular/material/button';
+
+import { AmplifyUIAngularModule } from '@aws-amplify/ui-angular';
+import Amplify from 'aws-amplify';
+import awsconfig from '../aws-exports';
+
+Amplify.configure(awsconfig);
 
 @NgModule({
   declarations: [
     AppComponent,
-    RosterComponent
+    RosterComponent,
+    RostersComponent,
+    NavComponent,
+    CurrentWeekComponent,
+    FreeAgentsComponent,
   ],
   imports: [
+    AmplifyUIAngularModule,
     BrowserModule,
-    AppRoutingModule,
     BrowserAnimationsModule,
-    DragDropModule
+    DragDropModule,
+    MatDividerModule,
+    MatSidenavModule,
+    MatCardModule,
+    MatTabsModule,
+    MatSelectModule,
+    MatButtonModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

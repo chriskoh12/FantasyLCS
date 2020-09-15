@@ -1,0 +1,33 @@
+<!-- <mat-card class="roster-card"> -->
+    <!-- <h1 style="margin-bottom: 0px; padding-left: 10px;">{{team.coach}}</h1> -->
+
+    <div cdkDropList class="example-list" *ngFor="let player of team.roster; let positionNum = index"
+        [cdkDropListEnterPredicate]="positionPredicate(positionNum)"
+        [cdkDropListData]="['roster', teamNum, positionNum]" (cdkDropListDropped)="playerMove($event)">
+        <div class="example-box" [ngStyle]="getBanner(player.team)" *ngIf="player; else blankPlaceholder"
+            [cdkDragData]="player.position" cdkDrag>
+            <img *ngIf="player.position !== 6; else teamSpace" [src]="getPlayerPicture(player)"
+                [alt]="getPlayerPicture(player)" [style]="getPortraitHeight()">
+            <ng-template #teamSpace>
+                <div style="margin-left: 10px;"></div>
+            </ng-template>
+            <div class="player-name">{{player.name}}</div>
+            <img class="banner-image" *ngIf="player.position !== 6" [src]="getPlayerPosition(player.position)" [alt]="getPlayerPosition(player.position)">
+            <img class="banner-image" [src]="getTeamLogo(player.team)" [alt]="getTeamLogo(player.team)">
+        </div>
+        <ng-template #blankPlaceholder>
+            <div class="example-box" cdkDrag [cdkDragDisabled]="true">
+
+            </div>
+        </ng-template>
+    </div>
+
+    <div cdkDropList class="bench-list" [cdkDropListData]="['bench', teamNum]"
+        (cdkDropListDropped)="playerMove($event)">
+        <div class="bench-box" [ngStyle]="getBanner(player.team)" *ngFor="let player of team.bench"
+            [cdkDragData]="player.position" cdkDrag>
+            {{player.name}}
+            <img [src]="getTeamLogo(player.team)" style="margin-left: auto;">
+        </div>
+    </div>
+<!-- </mat-card> -->

@@ -1,0 +1,25 @@
+  .rosters {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  .roster {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .coach-name {
+    margin-bottom: 0px;
+  }
+
+  .mat-sidenav-container {
+    background-color: rgb(43, 43, 43);
+  }
+
+  .mat-sidenav {
+    width: 420px;
+    overflow-x: hidden;
+    /* border-style: solid;
+    border-radius: 1px;
+    border-color: #999999; */
+  }

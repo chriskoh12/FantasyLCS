@@ -1,0 +1,22 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-fantasylcs-dev-165426-authRole",
+      "UnauthRoleArn": "arn:aws:iam::284245423850:role/amplify-fantasylcs-dev-165426-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::284245423850:role/amplify-fantasylcs-dev-165426-authRole",
+      "Region": "us-east-2",
+      "DeploymentBucketName": "amplify-fantasylcs-dev-165426-deployment",
+      "UnauthRoleName": "amplify-fantasylcs-dev-165426-unauthRole",
+      "StackName": "amplify-fantasylcs-dev-165426",
+      "StackId": "arn:aws:cloudformation:us-east-2:284245423850:stack/amplify-fantasylcs-dev-165426/4e11d0d0-ebe5-11ea-8f0f-068a5b117f6e",
+      "AmplifyAppId": "d1ai9f3aea4l71"
+    },
+    "categories": {
+      "auth": {
+        "FantasyLCSAuth": {
+          "hostedUIProviderCreds": "[]"
+        }
+      }
+    }
+  }
+}

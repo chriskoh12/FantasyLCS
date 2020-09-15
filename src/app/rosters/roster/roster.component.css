@@ -1,0 +1,108 @@
+:root {
+  --banner-width: 420px;
+  --banner-height: 47px;
+}
+
+.example-list {
+  /* width: var(--banner-width);*/
+  height: 47px; 
+  max-width: 100%;
+  /* min-height: 60px; */
+  display: block;
+  border-radius: 4px;
+  overflow: hidden;
+  /* padding-left: 10px;
+  padding-right: 10px; */
+}
+
+.bench-list {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  width: fit-content;
+  height: fit-content;
+  min-width: 100%;
+  min-height: 25px;
+  display: block;
+  border-radius: 4px;
+  overflow: hidden;
+  /* padding-left: 10px;
+  padding-right: 10px; */
+}
+
+.example-box {
+  /* padding: 20px 10px; */
+  width: 420px;
+  height: 47px;
+  color: white;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  /* justify-content: flex-start; */
+  /* box-sizing: border-box; */
+  cursor: move;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 24px;
+  letter-spacing: 2px;
+  word-spacing: 2px;
+  overflow: hidden;
+  border-radius: 4px;
+}
+
+.bench-box {
+   /* padding: 20px 10px; */
+   width: 420px;
+   height: fit-content;
+   color: white;
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+   justify-content: flex-start;
+   box-sizing: border-box;
+   cursor: move;
+   font-family: Arial, Helvetica, sans-serif;
+   font-size: 20px;
+   letter-spacing: 2px;
+   word-spacing: 2px;
+   padding-left: 20px;
+   overflow: hidden;
+   border-radius: 4px;
+}
+
+.roster-card {
+  width: fit-content;
+  padding: 0px;
+}
+
+.banner-image {
+  height: 70%;
+}
+
+.player-name {
+  margin-right: auto;
+}
+
+.cdk-drag-preview {
+  box-sizing: border-box;
+  border-radius: 4px;
+  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+    0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12);
+}
+
+.cdk-drag-placeholder {
+  opacity: 0.5;
+  /* height: 47px; */
+}
+
+.cdk-drag-animating {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+/* .cdk-drop-list-receiving {
+  -moz-box-shadow: 0 0 5px #fff;
+  -webkit-box-shadow: 0 0 5px #fff;
+  box-shadow: 0px 0px 5px #fff;
+} */
+
+.example-list.cdk-drop-list-dragging .example-box:not(.cdk-drag-placeholder) {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
