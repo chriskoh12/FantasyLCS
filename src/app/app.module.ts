@@ -8,6 +8,7 @@ import { RostersComponent } from './rosters/rosters.component';
 import { RosterComponent } from './rosters/roster/roster.component';
 import { CurrentWeekComponent } from './current-week/current-week.component';
 import { FreeAgentsComponent } from './free-agents/free-agents.component';
+import { LoginModalComponent } from './nav/login-modal/login-modal.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DragDropModule } from '@angular/cdk/drag-drop';
@@ -17,10 +18,14 @@ import { MatCardModule } from '@angular/material/card';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
-import { AmplifyUIAngularModule } from '@aws-amplify/ui-angular';
 import Amplify from 'aws-amplify';
 import awsconfig from '../aws-exports';
+
 
 Amplify.configure(awsconfig);
 
@@ -32,9 +37,9 @@ Amplify.configure(awsconfig);
     NavComponent,
     CurrentWeekComponent,
     FreeAgentsComponent,
+    LoginModalComponent,
   ],
   imports: [
-    AmplifyUIAngularModule,
     BrowserModule,
     BrowserAnimationsModule,
     DragDropModule,
@@ -44,6 +49,10 @@ Amplify.configure(awsconfig);
     MatTabsModule,
     MatSelectModule,
     MatButtonModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSnackBarModule,
     FormsModule
   ],
   providers: [],

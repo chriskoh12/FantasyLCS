@@ -3,6 +3,8 @@ import { TeamService } from '../team.service';
 import { FantasyTeam, Position, Player } from '../models/FantasyTeam';
 import { PlayerMoveEvent } from '../models/MoveEvents';
 import { transferArrayItem } from '@angular/cdk/drag-drop';
+import { MatDialog } from '@angular/material/dialog';
+import { LoginModalComponent } from './login-modal/login-modal.component';
 
 @Component({
   selector: 'app-nav',
@@ -17,11 +19,15 @@ export class NavComponent implements OnInit {
 
   freeAgents: Player[];
 
-  constructor(private teamService: TeamService) { }
+  constructor(private teamService: TeamService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.getTeams();
     this.getFreeAgents();
+  }
+
+  openDialog() {
+    this.dialog.open(LoginModalComponent);
   }
 
   getTeams(): void{

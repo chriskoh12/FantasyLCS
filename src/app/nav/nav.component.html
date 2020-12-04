@@ -8,5 +8,5 @@
     <mat-tab label="Free Agents">
         <app-free-agents [freeAgents]="freeAgents" [fantasyTeams]="teams" (playerMoved)="handlePlayerMove($event)"></app-free-agents>
     </mat-tab>
-    <div>save</div>
 </mat-tab-group>
+<button mat-button (click)="openDialog()">Log In</button>
