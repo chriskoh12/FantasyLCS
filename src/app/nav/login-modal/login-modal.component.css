@@ -1,0 +1,9 @@
+.mat-dialog-actions {
+    display: flex;
+    justify-content: space-evenly;
+    width: 180px;
+}
+
+.mat-flat-button {
+    margin: 5px;
+}
