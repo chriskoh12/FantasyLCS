@@ -1,9 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
-import { Auth } from 'aws-amplify';
-import { ISignUpResult, CognitoUser } from 'amazon-cognito-identity-js';
-import { SignUpParams } from '@aws-amplify/auth/lib-esm/types/Auth';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { AuthService } from 'src/app/auth.service';
+import { ISignUpResult, CognitoUser } from 'amazon-cognito-identity-js';
 // import * as AWS from 'aws-sdk';
 
 @Component({
@@ -19,43 +17,20 @@ export class LoginModalComponent implements OnInit {
   email: string;
   login: boolean = true;
 
-  constructor(private notification: MatSnackBar) { }
+  user: CognitoUser;
+
+  constructor(private notification: MatSnackBar, private authService: AuthService) { }
 
   ngOnInit(): void {
   }
 
-  // Make a call to AWS user pools attempting to sign in a user
-  async signUp(): Promise<ISignUpResult> {
-    console.log('username: ' + this.username);
-    console.log('password: ' + this.password);
-    const params: SignUpParams = {
-      username: this.username,
-      password: this.password,
-      attributes: {
-        email: this.email
-      }
-    };
-    try {
-      const user = await Auth.signUp(params);
-      // console.log(user);
-      this.openNotification('Sign up success! An email verification was sent to you.', 'Close');
-      return user;
-    } catch (error) {
-      // add to cloudwatch?
-      console.log('ERROR HAPPENED:', error);
-      this.openNotification('Sign up failed. Please contact the developer.', 'Close');
-    }
+  authSignIn(): void {
+    this.authService.signIn(this.username, this.password)
+      .subscribe( signInResult => this.user = signInResult);
   }
 
-  async signIn(): Promise<CognitoUser> {
-    try {
-      const user = await Auth.signIn(this.username, this.password);
-      console.log(user);
-      return user;
-    } catch (error) {
-      console.log('ERROR HAPPENED:', error);
-      this.openNotification('Sign in failed. Please contact the developer.', 'Close');
-    }
+  authSignUp(): void {
+    this.authService.signUp(this.username, this.password, this.email);
   }
 
   openNotification(message: string, actionLabel: string): void {
