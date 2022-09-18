@@ -44,6 +44,7 @@ export class NavComponent implements OnInit {
   roster to bench (transfer player to bench, then fill in the spot with a null player)
   bench to roster (check if player can fit in slot, if so then move them and splice out the spot where they were)
   bench to bench (just transfer the player to the other array)
+  can refactor with switch statement and create function to swap?
   */
   handlePlayerMove(playerMoveEvent: PlayerMoveEvent) { // TODO refactor for better organization
     console.log('received playerMoveEvent');
