@@ -26,7 +26,8 @@ export class LoginModalComponent implements OnInit {
 
   authSignIn(): void {
     this.authService.signIn(this.username, this.password)
-      .subscribe( signInResult => this.user = signInResult);
+      .then( signInResult => this.user = signInResult);
+      setTimeout(() => console.log(this.user), 2000);
   }
 
   authSignUp(): void {

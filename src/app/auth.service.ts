@@ -30,11 +30,12 @@ export class AuthService {
   }
 
   // Make a call to AWS user pools attempting to sign in a user
-  signIn(username: string, password: string): Observable<CognitoUser> {
-    return from(Auth.signIn(username, password))
-      .pipe(
-        catchError(this.handleError<CognitoUser>('signIn'))
-      );
+  signIn(username: string, password: string): Promise<CognitoUser> {
+    return Auth.signIn(username, password);
+    // return from(Auth.signIn(username, password))
+    //   .pipe(
+    //     catchError(this.handleError<CognitoUser>('signIn'))
+    //   );
   }
 
   // create a function based on what type of observable is needed from that service call
