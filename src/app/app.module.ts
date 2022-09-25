@@ -24,10 +24,10 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import Amplify from 'aws-amplify';
-// import awsconfig from '../aws-exports';
+import awsconfig from '../aws-exports';
 
 
-// Amplify.configure(awsconfig);
+Amplify.configure(awsconfig);
 
 @NgModule({
   declarations: [
