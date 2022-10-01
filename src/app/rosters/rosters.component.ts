@@ -24,6 +24,7 @@ export class RostersComponent implements OnInit {
 
   handlePlayerMove(playerMoveEvent: PlayerMoveEvent) {
     this.playerMoved.emit(playerMoveEvent);
+    console.log(this.teams)
   }
 
 }
