@@ -15,6 +15,7 @@
       "auth": {
         "FantasyLCSAuth": {},
         "true": {},
+        "userPoolGroups": {}
       }
     }
   },
