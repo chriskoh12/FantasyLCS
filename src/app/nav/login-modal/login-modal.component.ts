@@ -10,9 +10,8 @@ import { ISignUpResult, CognitoUser } from 'amazon-cognito-identity-js';
 })
 export class LoginModalComponent implements OnInit {
 
-  username: string = "";
   password: string = "";
-  email: string;
+  email: string = "";
   login: boolean = true;
 
   user: CognitoUser;
@@ -23,19 +22,20 @@ export class LoginModalComponent implements OnInit {
   }
 
   authSignIn(): void {
-    this.authService.signIn(this.username, this.password)
+    this.authService.signIn(this.email, this.password)
       .then( signInResult => {
         this.user = signInResult;
         console.log(this.user);
         this.openNotification("Signed In successfully!");
       })
       .catch( err => {
+        console.log("sign in error: ", err )
         this.openNotification("Incorrect username or password");
       });
   }
 
   authSignUp(): void {
-    this.authService.signUp(this.username, this.password, this.email)
+    this.authService.signUp(this.email, this.email, this.password)
       .then( () => this.openNotification("Signed Up successfully!"))
       .catch( err => {
         console.log(err)

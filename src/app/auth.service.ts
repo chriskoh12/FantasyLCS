@@ -13,7 +13,7 @@ export class AuthService {
   constructor() { }
 
   // Make a call to AWS user pools attempting to sign up a user
-  signUp(username: string, password: string, email: string): Promise<ISignUpResult> {
+  signUp(username: string, email: string, password: string): Promise<ISignUpResult> {
     // construct params to pass to AWS auth signup function
     const params: SignUpParams = {
       username,
