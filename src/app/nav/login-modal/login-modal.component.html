@@ -17,7 +17,7 @@
     </div>
     <div mat-dialog-actions>
         <button mat-flat-button class="half-width-button" (click)="authSignIn()" color="primary">Log In</button>
-        <button mat-flat-button class="half-width-button" color="primary" mat-dialog-close cdkFocusInitial>Close</button>
+        <button mat-flat-button class="half-width-button" color="primary" mat-dialog-close>Close</button>
     </div>
     <div>
         <button mat-flat-button class="fill-width-button" (click)="login = !login" color="accent">Go to Sign Up</button>
@@ -28,28 +28,28 @@
 <div *ngIf="!login">
     <h1 mat-dialog-title>Sign Up</h1>
     <div mat-dialog-content>
-            <div>
-                <mat-form-field appearance="standard">
-                    <mat-label>Email</mat-label>
-                    <input type="email" #emailField="ngModel" required pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" matInput [(ngModel)]="email">
-                    <mat-error *ngIf="emailField.errors">
-                        Please enter a valid email address
-                    </mat-error>
-                </mat-form-field>
-            </div>
-            <div>
-                <mat-form-field appearance="standard">
-                    <mat-label>Password</mat-label>
-                    <input type="password" #passField="ngModel" required pattern="^.{8,24}$" matInput [(ngModel)]="password">
-                    <mat-error *ngIf="passField.errors">
-                        Please enter a password 8-24 characters long
-                    </mat-error>
-                </mat-form-field>
-            </div>
+        <div>
+            <mat-form-field appearance="standard">
+                <mat-label>Email</mat-label>
+                <input type="email" #emailField="ngModel" required pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" matInput [(ngModel)]="email">
+                <mat-error *ngIf="emailField.errors">
+                    Please enter a valid email address
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field appearance="standard">
+                <mat-label>Password</mat-label>
+                <input type="password" #passField="ngModel" required pattern="^.{8,24}$" matInput [(ngModel)]="password">
+                <mat-error *ngIf="passField.errors">
+                    Please enter a password 8-24 characters long
+                </mat-error>
+            </mat-form-field>
+        </div>
     </div>
     <div mat-dialog-actions>
-        <button mat-flat-button class="half-width-button" (click)="authSignUp()" color="primary">Sign Up</button>
-        <button mat-flat-button class="half-width-button" color="primary" mat-dialog-close cdkFocusInitial>Close</button>
+        <button mat-flat-button class="half-width-button" (click)="authSignUp()" color="primary" disabled="{{emailField.control.errors !== null || passField.control.errors !== null}}">Sign Up</button>
+        <button mat-flat-button class="half-width-button" color="primary" mat-dialog-close>Close</button>
     </div>
     <div>
         <button mat-flat-button class="fill-width-button" (click)="login = !login" color="accent">Go to Log In</button>
