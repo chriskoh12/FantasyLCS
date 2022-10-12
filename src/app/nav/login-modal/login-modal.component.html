@@ -31,7 +31,7 @@
         <div>
             <mat-form-field appearance="standard">
                 <mat-label>Email</mat-label>
-                <input type="email" #emailField="ngModel" required pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" matInput [(ngModel)]="email">
+                <input type="email" #emailField="ngModel" required pattern="^[A-Za-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" matInput [(ngModel)]="email">
                 <mat-error *ngIf="emailField.errors">
                     Please enter a valid email address
                 </mat-error>
