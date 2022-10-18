@@ -24,6 +24,7 @@
     "@aws-amplify/ui-angular": "^0.3.0",
     "aws-amplify": "^3.0.25",
     "aws-amplify-angular": "^5.0.24",
+    "chart.js": "^3.9.1",
     "ng2-charts": "^4.0.1",
     "rxjs": "^6.5.5",
     "tslib": "^2.0.0",
