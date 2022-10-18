@@ -23,6 +23,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 
+import { NgChartsModule } from 'ng2-charts';
+
 import Amplify from 'aws-amplify';
 import awsconfig from '../aws-exports';
 
@@ -53,7 +55,8 @@ Amplify.configure(awsconfig);
     MatFormFieldModule,
     MatInputModule,
     MatSnackBarModule,
-    FormsModule
+    FormsModule,
+    NgChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
