@@ -17,7 +17,12 @@ export class CurrentWeekComponent implements OnInit {
     
     labels: [ 'Player 1', 'Player 2', 'Player 3', 'Player 4', 'Player 5', 'Player 6'],
     datasets: [
-      { data: [ 65, 40, 18, 81, 56, 55 ], label: 'Highest'},
+    { borderColor: 'black',
+      borderWidth: 2,
+      borderRadius: 100,
+      data: [ 65, 40, 18, 81, 56, 55 ], 
+      label: 'Highest',
+    }
     
     ]
   };
@@ -25,8 +30,7 @@ export class CurrentWeekComponent implements OnInit {
   public barChartOptions: ChartConfiguration<'bar'>['options'] = {
     responsive: true,
     indexAxis: 'y',
-    backgroundColor: "$my-app-primary",
-    //borderRadius: 1,
+    backgroundColor: 'rgba(153, 102, 255, 0.5)',
   };
 
   
