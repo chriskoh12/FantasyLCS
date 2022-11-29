@@ -1,14 +1,15 @@
 :root {
-  --banner-width: 420px;
-  --banner-height: 47px;
+  --banner-width: 400px;
+  --banner-height: 100px;
 }
 
 .example-list {
   /* width: var(--banner-width);*/
-  height: 47px; 
+  height: 100px; 
   max-width: 100%;
   /* min-height: 60px; */
-  display: block;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   border-radius: 4px;
   overflow: hidden;
   /* padding-left: 10px;
@@ -16,13 +17,13 @@
 }
 
 .bench-list {
-  padding-top: 10px;
+  padding-top: 100px;
   padding-bottom: 10px;
   width: fit-content;
   height: fit-content;
   min-width: 100%;
   min-height: 25px;
-  display: block;
+  display: none;
   border-radius: 4px;
   overflow: hidden;
   /* padding-left: 10px;
@@ -31,8 +32,8 @@
 
 .example-box {
   /* padding: 20px 10px; */
-  width: 420px;
-  height: 47px;
+  width: 400px;
+  height: 100px;
   color: white;
   display: flex;
   flex-direction: row;
@@ -50,7 +51,7 @@
 
 .bench-box {
    /* padding: 20px 10px; */
-   width: 420px;
+   width: 400px;
    height: fit-content;
    color: white;
    display: flex;
