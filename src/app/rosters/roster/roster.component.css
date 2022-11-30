@@ -16,19 +16,7 @@
   padding-right: 10px; */
 }
 
-.bench-list {
-  padding-top: 100px;
-  padding-bottom: 10px;
-  width: fit-content;
-  height: fit-content;
-  min-width: 50%;
-  min-height: 25px;
-  display: none;
-  border-radius: 4px;
-  overflow: hidden;
-  /* padding-left: 10px;
-  padding-right: 10px; */
-}
+
 
 .example-box {
   /* padding: 20px 10px; */
@@ -47,26 +35,6 @@
   word-spacing: 2px;
   overflow: hidden;
   border-radius: 4px;
-}
-
-.bench-box {
-   /* padding: 20px 10px; */
-   width: 200px;
-   height: fit-content;
-   color: white;
-   display: flex;
-   flex-direction: row;
-   align-items: center;
-   justify-content: flex-start;
-   box-sizing: border-box;
-   cursor: move;
-   font-family: Arial, Helvetica, sans-serif;
-   font-size: 20px;
-   letter-spacing: 2px;
-   word-spacing: 2px;
-   padding-left: 20px;
-   overflow: hidden;
-   border-radius: 4px;
 }
 
 .roster-card {
