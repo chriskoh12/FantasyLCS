@@ -166,7 +166,7 @@ export class TeamService {
     },
     {
       name: 'B',
-      coach: 'Vasko',
+      coach: 'Alex',
       roster: this.rosters[1],
       bench: this.benches[1]
     },
@@ -182,12 +182,12 @@ export class TeamService {
       roster: this.rosters[3],
       bench: this.benches[3]
     },
-    {
-      name: 'E',
-      coach: 'Alex',
-      roster: this.rosters[4],
-      bench: this.benches[4]
-    }
+    // {
+    //   name: 'E',
+    //   coach: 'Alex',
+    //   roster: this.rosters[4],
+    //   bench: this.benches[4]
+    // }
   ];
 
   constructor() { }

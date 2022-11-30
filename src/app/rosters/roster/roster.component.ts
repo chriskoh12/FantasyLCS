@@ -26,8 +26,8 @@ export class RosterComponent implements OnInit {
 
   getBanner(team: string) {
     return {
-      'background-image': 'url("../../assets/Banners/' + team + '.png")',
-      'background-size': '420px 47px'
+      'background-image': 'url("../../assets/Banners/Deft2.png")',
+      'background-size': '200px 100px'
     };
   }
 

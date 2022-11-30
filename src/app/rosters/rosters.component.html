@@ -4,7 +4,7 @@
             <div class="roster" *ngFor="let team of teams; let teamNum = index">
                 <h1 class="coach-name">{{team.coach}}</h1>
                 <app-roster [team]="team" [teamNum]="teamNum"
-                (playerMoved)="handlePlayerMove($event)"></app-roster>
+                ></app-roster> <!--(playerMoved)="handlePlayerMove($event)"-->
             </div>
         </div>
     </mat-sidenav-content>
