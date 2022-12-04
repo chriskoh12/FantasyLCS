@@ -20,7 +20,7 @@ export class CurrentWeekComponent implements OnInit {
     { borderColor: 'black',
       borderWidth: 2,
       borderRadius: 100,
-      data: [ 65, 40, 18, 81, 56, 55 ], 
+      data: [ 65, 40, 18, 81, 56, 55 ].sort((n1,n2) => n2-n1), 
       label: 'Highest',
     }
     
