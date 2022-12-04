@@ -1,40 +1,43 @@
 :root {
   --banner-width: 200px;
-  --banner-height: 4100px;
+  --banner-height: 400px;
 }
 
 .example-list {
-  /* width: var(--banner-width);*/
-  height: 100px; 
+  width: 402px;
+  height: 200px; 
   max-width: 100%;
   /* min-height: 60px; */
-  display: grid;
-  grid-template-columns: 4fr 4fr;
-  border-radius: 4px;
-  overflow: hidden;
+  /* border-radius: 4px;
+  overflow: visible; */
   /* padding-left: 10px;
   padding-right: 10px; */
 }
 
-
-
-.example-box {
-  /* padding: 20px 10px; */
+.example-player{
   width: 200px;
-  height: 100px;
-  color: white;
-  display: flex;
-  flex-direction: row;
+  height: 50px;
+  /* color: white;
   align-items: center;
-  /* justify-content: flex-start; */
-  /* box-sizing: border-box; */
-  cursor: move;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 24px;
   letter-spacing: 2px;
   word-spacing: 2px;
-  overflow: hidden;
-  border-radius: 4px;
+  overflow: visible;
+  border-radius: 4px; */
+}
+
+.example-team{
+  width: 100px;
+  height: 50px;
+  /* color: white;
+  align-items: center;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 24px;
+  letter-spacing: 2px;
+  word-spacing: 2px;
+  overflow: visible;
+  border-radius: 4px; */
 }
 
 .roster-card {
@@ -43,7 +46,7 @@
 }
 
 .banner-image {
-  height: 70%;
+  height: 100%;
 }
 
 .player-name {

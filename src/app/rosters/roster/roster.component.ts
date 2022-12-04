@@ -24,7 +24,7 @@ export class RosterComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  getBanner(team: string) {
+  getBanner() {
     return {
       'background-image': 'url("../../assets/Banners/Deft2.png")',
       'background-size': '200px 100px'
