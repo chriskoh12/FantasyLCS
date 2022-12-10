@@ -18,5 +18,33 @@
         }
       }
     }
+  },
+  "devtwo": {
+    "categories": {
+      "auth": {
+        "FantasyLCSAuth": {},
+        "fantasylcsb34f44b8": {}
+      }
+    },
+    "awscloudformation": {}
+  },
+  "devfour": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-fantasylcs-devfour-223507-authRole",
+      "UnauthRoleArn": "arn:aws:iam::284245423850:role/amplify-fantasylcs-devfour-223507-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::284245423850:role/amplify-fantasylcs-devfour-223507-authRole",
+      "Region": "us-east-2",
+      "DeploymentBucketName": "amplify-fantasylcs-devfour-223507-deployment",
+      "UnauthRoleName": "amplify-fantasylcs-devfour-223507-unauthRole",
+      "StackName": "amplify-fantasylcs-devfour-223507",
+      "StackId": "arn:aws:cloudformation:us-east-2:284245423850:stack/amplify-fantasylcs-devfour-223507/75c437c0-76c2-11ed-98c0-0a8c5403ef94",
+      "AmplifyAppId": "d1ai9f3aea4l71"
+    },
+    "categories": {
+      "auth": {
+        "FantasyLCSAuth": {},
+        "userPoolGroups": {}
+      }
+    }
   }
 }
