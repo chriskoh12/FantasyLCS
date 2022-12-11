@@ -13,8 +13,7 @@ export class AuthService {
   constructor() { }
 
   // Make a call to AWS user pools attempting to sign up a user
-  signUp(username: string, password: string, email: string): Observable<ISignUpResult> {
-    console.log('attempting to sign up with username: %s and password: %s and email: %s', username, password, email);
+  signUp(username: string, email: string, password: string): Promise<ISignUpResult> {
     // construct params to pass to AWS auth signup function
     const params: SignUpParams = {
       username,
@@ -23,18 +22,12 @@ export class AuthService {
         email
       }
     };
-    return from(Auth.signUp(params))
-      .pipe(
-        catchError(this.handleError<ISignUpResult>('signUp'))
-      );
+    return Auth.signUp(params);
   }
 
   // Make a call to AWS user pools attempting to sign in a user
-  signIn(username: string, password: string): Observable<CognitoUser> {
-    return from(Auth.signIn(username, password))
-      .pipe(
-        catchError(this.handleError<CognitoUser>('signIn'))
-      );
+  signIn(username: string, password: string): Promise<CognitoUser> {
+    return Auth.signIn(username, password);
   }
 
   // create a function based on what type of observable is needed from that service call
