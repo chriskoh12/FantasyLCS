@@ -1,8 +1,7 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { AuthService } from 'src/app/auth.service';
 import { ISignUpResult, CognitoUser } from 'amazon-cognito-identity-js';
-// import * as AWS from 'aws-sdk';
 
 @Component({
   selector: 'app-login-modal',
@@ -11,10 +10,8 @@ import { ISignUpResult, CognitoUser } from 'amazon-cognito-identity-js';
 })
 export class LoginModalComponent implements OnInit {
 
-  // @Output() userSignUp = new EventEmitter<PlayerMoveEvent>();
-  username: string;
-  password: string;
-  email: string;
+  password: string = "";
+  email: string = "";
   login: boolean = true;
 
   user: CognitoUser;
@@ -25,17 +22,30 @@ export class LoginModalComponent implements OnInit {
   }
 
   authSignIn(): void {
-    this.authService.signIn(this.username, this.password)
-      .subscribe( signInResult => this.user = signInResult);
+    this.authService.signIn(this.email, this.password)
+      .then( signInResult => {
+        this.user = signInResult;
+        console.log(this.user);
+        this.openNotification("Signed In successfully!");
+      })
+      .catch( err => {
+        console.log("sign in error: ", err )
+        this.openNotification("Incorrect username or password");
+      });
   }
 
   authSignUp(): void {
-    this.authService.signUp(this.username, this.password, this.email);
+    this.authService.signUp(this.email, this.email, this.password)
+      .then( () => this.openNotification("Signed Up successfully!"))
+      .catch( err => {
+        console.log(err)
+        this.openNotification(`Sign Up unsuccessful. Reason: ${err}`)
+      });
   }
 
-  openNotification(message: string, actionLabel: string): void {
+  openNotification(message: string, duration: number = 3000, actionLabel: string = ""): void {
     this.notification.open(message, actionLabel, {
-      duration: 5000,
+      duration: duration,
       horizontalPosition: 'center',
       verticalPosition: 'top'
       });

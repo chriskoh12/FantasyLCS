@@ -1,9 +1,20 @@
 .mat-dialog-actions {
-    display: flex;
-    justify-content: space-evenly;
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 1fr;
+    align-items: baseline;
     width: 180px;
 }
 
-.mat-flat-button {
-    margin: 5px;
+.mat-dialog-content {
+    height: 175px;
+}
+
+.half-width-button {
+    min-width: 50%;
+}
+
+.fill-width-button {
+    min-width: 100%;
+    margin-top: 5px;
 }
