@@ -43,5 +43,13 @@
         }
       }
     }
+  },
+  "devfour": {
+    "categories": {
+      "auth": {
+        "fantasylcsb34f44b8": {},
+        "userPoolGroups": {}
+      }
+    }
   }
 }

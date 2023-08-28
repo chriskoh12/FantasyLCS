@@ -1,8 +1,7 @@
 {
   "auth": {
-    "fantasylcsb34f44b8": {
+    "FantasyLCSAuth": {
       "service": "Cognito",
-      "serviceType": "imported",
       "providerPlugin": "awscloudformation",
       "dependsOn": [],
       "customAuth": false
