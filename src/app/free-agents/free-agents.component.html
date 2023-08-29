@@ -41,7 +41,7 @@
                 <mat-option value="available">Available</mat-option>
             </mat-select>
         </mat-form-field>
-        <div class="free-agents-container">
+        <!-- <div class="free-agents-container">
             <div cdkDropList *ngFor="let player of freeAgents; let freeAgentNum = index" [cdkDropListEnterPredicate]="noMoveIntoFreeAgents" 
             [cdkDropListData]="['free', freeAgentNum, player.position]">
                 <div class="example-box" [ngStyle]="getBanner(player.team)" [cdkDragData]="player.position" cdkDrag>
@@ -54,6 +54,6 @@
                     <img class="banner-image" [src]="getTeamLogo(player.team)" [alt]="getTeamLogo(player.team)">
                 </div>
             </div>
-        </div>
+        </div> -->
     </div>
 </div>
