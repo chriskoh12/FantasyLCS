@@ -55,6 +55,10 @@
   margin-right: auto;
 }
 
+.free-agents-table{
+  width: 99%;
+}
+
 .free-agents-container {
   width: auto;
   height: 850px;

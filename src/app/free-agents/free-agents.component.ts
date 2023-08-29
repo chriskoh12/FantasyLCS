@@ -26,7 +26,7 @@ export class FreeAgentsComponent implements OnInit {
   selectedFantasyTeam: FantasyTeam;
   sortBy: SortBy = 'alpha';
   owned = 'all';
-
+  displayedColumns: string[] = ['name', 'team', 'position', 'averagePts', 'coach', 'button'];
   selectedTeams: Team[];
   selectedRoles: string[];
 
