@@ -6,7 +6,7 @@ import { SortBy } from '../models/SortBy';
 import { PlayerMoveEvent } from '../models/MoveEvents';
 import { CdkDragDrop } from '@angular/cdk/drag-drop';
 import { MatTableDataSource } from '@angular/material/table';
-import { EmpFilter, filterOption } from '../model/empfilter';
+import { EmpFilter, filterOption } from '../models/empfilter';
 import { MatSort, Sort, MatSortModule } from '@angular/material/sort';
 
 @Component({
