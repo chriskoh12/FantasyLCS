@@ -5,20 +5,22 @@ import { TeamService } from '../team.service';
 import { SortBy } from '../models/SortBy';
 import { PlayerMoveEvent } from '../models/MoveEvents';
 import { CdkDragDrop } from '@angular/cdk/drag-drop';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatSort, Sort, MatSortModule } from '@angular/material/sort';
 
 @Component({
   selector: 'app-free-agents',
   templateUrl: './free-agents.component.html',
   styleUrls: ['./free-agents.component.css'],
 })
-export class FreeAgentsComponent implements OnInit {
+export class FreeAgentsComponent implements OnInit, AfterViewInit {
 
   PORTRAIT_HEIGHT = '47px';
   PORTRAIT_WIDTH = '59.42px';
 
   @Input() fantasyTeams: FantasyTeam[];
   @Input() freeAgents: Player[];
-
+  @ViewChild('empTbSort') empTbSort = new MatSort();
   @Output() playerMoved = new EventEmitter<PlayerMoveEvent>();
 
 
@@ -30,14 +32,23 @@ export class FreeAgentsComponent implements OnInit {
   displayedColumns: string[] = ['name', 'team', 'position', 'averagePts', 'coach', 'button'];
   selectedTeams: Team[];
   selectedRoles: string[];
+  dataSource = new MatTableDataSource();
+
+
 
   constructor(private teamService: TeamService) { }
+
+  ngAfterViewInit(): void {
+    this.dataSource.sort = this.empTbSort;
+  }
 
   ngOnInit(): void {
     this.getTeamsList();
     this.selectedTeams = this.teamsList;
     this.selectedFantasyTeam = this.fantasyTeams[0];
     this.selectedRoles = ['Top', 'Jungle', 'Mid', 'ADC', 'Sup', 'Flex', 'Team'];
+    this.dataSource = new MatTableDataSource(this.freeAgents);
+    this.dataSource.sort = this.empTbSort;
   }
 
   getBanner(team: string) {
