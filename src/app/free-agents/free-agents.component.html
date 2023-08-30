@@ -112,17 +112,17 @@
 
     <!-- Sort and filter -->    
     <div class="free-agents-sort">
-        <mat-form-field class="form-field">
+        <!-- <mat-form-field class="form-field">
             <mat-label>Sort By:</mat-label>
             <mat-select [(value)]="sortBy">
                 <mat-option value="alpha">Alphabetical</mat-option>
                 <mat-option value="avg">Average Points</mat-option>
                 <mat-option value="proj">Projected Points</mat-option>
             </mat-select>
-        </mat-form-field>
+        </mat-form-field> -->
         <mat-form-field class="form-field">
             <mat-label>Team:</mat-label>
-            <mat-select [(ngModel)]="selectedTeams" multiple>
+            <mat-select [(ngModel)]="selectedTeams" multiple (change)="applyFilter($event)">
                 <mat-option style="color: white" *ngFor="let team of teamsList" [value]="team">{{team}}</mat-option>
             </mat-select>
         </mat-form-field>

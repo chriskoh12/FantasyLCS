@@ -6,6 +6,7 @@ import { SortBy } from '../models/SortBy';
 import { PlayerMoveEvent } from '../models/MoveEvents';
 import { CdkDragDrop } from '@angular/cdk/drag-drop';
 import { MatTableDataSource } from '@angular/material/table';
+import { EmpFilter, filterOption } from '../model/empfilter';
 import { MatSort, Sort, MatSortModule } from '@angular/material/sort';
 
 @Component({
@@ -101,7 +102,10 @@ export class FreeAgentsComponent implements OnInit, AfterViewInit {
     this.playerMoved.emit(playerMoveEvent);
   }
 
-
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
 
 }
 
