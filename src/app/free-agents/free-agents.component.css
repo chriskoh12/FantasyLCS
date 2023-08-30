@@ -11,10 +11,19 @@
   font-size: 25px;
 } */
 
-.selected-roster {
+.roster-control {
   margin-top: -12px;
   padding: 10px;
   align-self: top;
+}
+
+.selected-roster {
+  display: grid;
+  grid-template-columns: 4fr 1fr;
+}
+
+.roster-buttons{
+  margin-left: 15px;
 }
 
 .swap-box {
