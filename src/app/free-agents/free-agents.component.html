@@ -1,4 +1,5 @@
 <div class="free-agents-tab" cdkDropListGroup>
+    <div>
     <div class="selected-roster">
         <mat-form-field>
             <mat-select style="font-size: 25px;" [(value)]="selectedFantasyTeam">
@@ -11,6 +12,20 @@
                 (playerMoved)="handlePlayerMove($event)">
             </app-roster>
         </mat-card>
+    </div>
+    <div class="swap-box">
+        <mat-form-field>
+            <mat-select style="font-size: 25px;" [(value)]="selectedFantasyTeam">
+                <mat-option style="font-size: 15px;" *ngFor="let team of fantasyTeams" [value]="team">{{team.coach}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-card style="height: fit-content;">
+            <app-roster [team]="selectedFantasyTeam" [teamNum]="getTeamNum(selectedFantasyTeam)"
+                (playerMoved)="handlePlayerMove($event)">
+            </app-roster>
+        </mat-card>
+    </div>
     </div>
     <div class="free-agents-sort">
         <mat-form-field class="form-field">
@@ -60,22 +75,29 @@
                     <td mat-cell *matCellDef="let element"> {{element.team}} </td>
                 </ng-container>
 
-                <!-- Symbol Column -->
+                <!-- Points Column -->
                 <ng-container matColumnDef="averagePts">
                     <th mat-header-cell *matHeaderCellDef> AveragePTS </th>
                     <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
                 </ng-container>
 
-                <!-- Symbol Column -->
+                <!-- Coach Column -->
                 <ng-container matColumnDef="coach">
                     <th mat-header-cell *matHeaderCellDef> Coach </th>
                     <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
                 </ng-container>
 
-                <!-- Symbol Column -->
-                <ng-container matColumnDef="button">
+                <!-- Button Column -->
+                <!-- <ng-container matColumnDef="button">
                     <th mat-header-cell *matHeaderCellDef> Button </th>
                     <td mat-cell *matCellDef="let element"> {{element.button}} </td>
+                </ng-container> -->
+
+                <ng-container matColumnDef="button">
+                    <th mat-header-cell *matHeaderCellDef> Button </th>
+                    <td mat-cell *matCellDef="let row">
+                        <button mat-raised-button>Edit</button>
+                    </td>
                 </ng-container>
 
                 <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

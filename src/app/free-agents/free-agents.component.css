@@ -12,6 +12,13 @@
 } */
 
 .selected-roster {
+  margin-top: -12px;
+  padding: 10px;
+  align-self: top;
+}
+
+.swap-box {
+  margin-top: -12px;
   padding: 10px;
   align-self: top;
 }
