@@ -1,4 +1,5 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, AfterViewInit, ViewChild } from '@angular/core';
+import {LiveAnnouncer} from '@angular/cdk/a11y';
 import { FantasyTeam, Team, Player } from '../models/FantasyTeam';
 import { TeamService } from '../team.service';
 import { SortBy } from '../models/SortBy';
@@ -89,4 +90,8 @@ export class FreeAgentsComponent implements OnInit {
     this.playerMoved.emit(playerMoveEvent);
   }
 
+
+
 }
+
+

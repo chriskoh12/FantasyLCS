@@ -22,7 +22,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import {MatTableModule} from '@angular/material/table';
+import { MatTableModule } from '@angular/material/table';
+import { MatSort, Sort, MatSortModule } from '@angular/material/sort';
 
 import Amplify from 'aws-amplify';
 import awsconfig from '../aws-exports';
@@ -55,6 +56,7 @@ Amplify.configure(awsconfig);
     MatInputModule,
     MatSnackBarModule,
     MatTableModule,
+    MatSortModule,
     FormsModule
   ],
   providers: [],
