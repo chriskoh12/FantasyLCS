@@ -121,7 +121,7 @@
             </mat-select>
         </mat-form-field> -->
 
-        <mat-form-field appearance="fill" *ngFor="let empfilter of empFilters">
+        <mat-form-field class="form-field"  *ngFor="let empfilter of empFilters">
             <mat-label>{{ empfilter.name }}</mat-label>
             <mat-select [(value)]="empfilter.defaultValue" (selectionChange)="applyEmpFilter($event, empfilter)">
             <mat-option *ngFor="let op of empfilter.options" [value]="op">
