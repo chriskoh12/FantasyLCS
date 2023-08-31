@@ -120,14 +120,25 @@
                 <mat-option value="proj">Projected Points</mat-option>
             </mat-select>
         </mat-form-field> -->
+
+        <mat-form-field appearance="fill" *ngFor="let empfilter of empFilters">
+            <mat-label>{{ empfilter.name }}</mat-label>
+            <mat-select [(value)]="empfilter.defaultValue" (selectionChange)="applyEmpFilter($event, empfilter)">
+            <mat-option *ngFor="let op of empfilter.options" [value]="op">
+                {{ op }}
+            </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <br />
+
         <mat-form-field class="form-field">
             <mat-label>Team:</mat-label>
             <mat-select [(ngModel)]="selectedTeams" multiple (change)="applyFilter($event)">
                 <mat-option style="color: white" *ngFor="let team of teamsList" [value]="team">{{team}}</mat-option>
             </mat-select>
         </mat-form-field>
-        <mat-form-field class="form-field">
-            <mat-label>Role:</mat-label>
+        <mat-form-field class="form-field" *ngFor="let empfilter of empFilters">
+            <mat-label> {{empfilter.name}} </mat-label>
             <mat-select [(ngModel)]="selectedRoles" multiple>
                 <mat-option style="color: white" *ngFor="let role of rolesList" [value]="role">{{role}}</mat-option>
             </mat-select>
@@ -144,7 +155,7 @@
 
     <!-- Free agents table -->
     <div class="free-agents-container">
-        <table mat-table [dataSource]="dataSource" class="free-agents-table" matSort #empTbSort="matSort" >
+        <table mat-table [dataSource]="dataSourceFilters" class="free-agents-table" matSort #empTbSort="matSort" >
               <!-- Position Column -->
                 <ng-container matColumnDef="position">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Position </th>

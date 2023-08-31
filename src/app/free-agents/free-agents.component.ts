@@ -7,6 +7,7 @@ import { PlayerMoveEvent } from '../models/MoveEvents';
 import { CdkDragDrop } from '@angular/cdk/drag-drop';
 import { MatTableDataSource } from '@angular/material/table';
 import { EmpFilter, filterOption } from '../models/empfilter';
+import { MatSelectChange } from '@angular/material/select';
 import { MatSort, Sort, MatSortModule } from '@angular/material/sort';
 
 @Component({
@@ -26,17 +27,20 @@ export class FreeAgentsComponent implements OnInit, AfterViewInit {
 
 
   teamsList: Team[];
+  teamListStrings: string[] = ['100','FLY'];
   rolesList: string[] = ['Top', 'Jungle', 'Mid', 'ADC', 'Sup', 'Flex', 'Team'];
+  coachList: string[] = [ 'Alex', 'Andrew', 'Chris', 'Griffin', 'Free Agent'];
   selectedFantasyTeam: FantasyTeam;
+  defaultValue = "All";
   sortBy: SortBy = 'alpha';
   owned = 'all';
   displayedColumns: string[] = ['name', 'team', 'position', 'averagePts', 'coach', 'button'];
   selectedTeams: Team[];
   selectedRoles: string[];
   dataSource = new MatTableDataSource();
-
-
-
+  empFilters: EmpFilter[]=[];
+  filterDictionary= new Map<string,string>();
+  dataSourceFilters = new MatTableDataSource();
   constructor(private teamService: TeamService) { }
 
   ngAfterViewInit(): void {
@@ -50,6 +54,22 @@ export class FreeAgentsComponent implements OnInit, AfterViewInit {
     this.selectedRoles = ['Top', 'Jungle', 'Mid', 'ADC', 'Sup', 'Flex', 'Team'];
     this.dataSource = new MatTableDataSource(this.freeAgents);
     this.dataSource.sort = this.empTbSort;
+    this.dataSourceFilters = new MatTableDataSource(this.freeAgents);
+    this.empFilters.push({name:"Position", options: this.selectedRoles, defaultValue:this.rolesList})
+    this.empFilters.push({name:"Team", options: this.teamListStrings, defaultValue:this.teamsList})
+    this.empFilters.push({name:"Coach", options: this.coachList, defaultValue:this.rolesList})
+
+
+    this.dataSourceFilters.filterPredicate = function (record,filter) {
+      debugger;
+      var map = new Map(JSON.parse(filter));
+      let isMatch = false;
+      for(let [key,value] of map){
+        isMatch = (value=="All") || (record[key as keyof Player] == value); 
+        if(!isMatch) return false;
+      }
+      return isMatch;
+    }
   }
 
   getBanner(team: string) {
@@ -101,6 +121,19 @@ export class FreeAgentsComponent implements OnInit, AfterViewInit {
   handlePlayerMove(playerMoveEvent: PlayerMoveEvent){
     this.playerMoved.emit(playerMoveEvent);
   }
+
+
+  applyEmpFilter(ob:MatSelectChange,empfilter:EmpFilter) {
+
+    this.filterDictionary.set(empfilter.name,ob.value);
+
+
+    var jsonString = JSON.stringify(Array.from(this.filterDictionary.entries()));
+    
+    this.dataSourceFilters.filter = jsonString;
+    //console.log(this.filterValues);
+  }
+
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;

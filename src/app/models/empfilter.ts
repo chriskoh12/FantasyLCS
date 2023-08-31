@@ -1,7 +1,7 @@
 export interface EmpFilter {
     name:string;
     options:string[];
-    defaultValue:string;
+    defaultValue:string[];
 }
 
 export interface filterOption{
