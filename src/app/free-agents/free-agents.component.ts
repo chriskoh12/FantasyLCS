@@ -27,9 +27,9 @@ export class FreeAgentsComponent implements OnInit, AfterViewInit {
 
 
   teamsList: Team[];
-  teamListStrings: string[] = ['100','FLY'];
-  rolesList: string[] = ['Top', 'Jungle', 'Mid', 'ADC', 'Sup', 'Flex', 'Team'];
-  coachList: string[] = [ 'Alex', 'Andrew', 'Chris', 'Griffin', 'Free Agent'];
+  teamListStrings: string[] = ['100','FLY','All'];
+  rolesList: string[] = ['Top', 'Jungle', 'Mid', 'Bot', 'Support', 'Team', 'All'];
+  coachList: string[] = [ 'Alex', 'Andrew', 'Chris', 'Griffin', 'Free Agent', 'All'];
   selectedFantasyTeam: FantasyTeam;
   defaultValue = "All";
   sortBy: SortBy = 'alpha';
@@ -44,31 +44,34 @@ export class FreeAgentsComponent implements OnInit, AfterViewInit {
   constructor(private teamService: TeamService) { }
 
   ngAfterViewInit(): void {
-    this.dataSource.sort = this.empTbSort;
+    this.dataSourceFilters.sort = this.empTbSort;
   }
 
   ngOnInit(): void {
     this.getTeamsList();
     this.selectedTeams = this.teamsList;
     this.selectedFantasyTeam = this.fantasyTeams[0];
-    this.selectedRoles = ['Top', 'Jungle', 'Mid', 'ADC', 'Sup', 'Flex', 'Team'];
+    this.selectedRoles = ['Top', 'Jungle', 'Mid', 'Bot', 'Support', 'Team', 'All'];
     this.dataSource = new MatTableDataSource(this.freeAgents);
     this.dataSource.sort = this.empTbSort;
     this.dataSourceFilters = new MatTableDataSource(this.freeAgents);
-    this.empFilters.push({name:"Position", options: this.selectedRoles, defaultValue:this.rolesList})
-    this.empFilters.push({name:"Team", options: this.teamListStrings, defaultValue:this.teamsList})
-    this.empFilters.push({name:"Coach", options: this.coachList, defaultValue:this.rolesList})
+    this.empFilters.push({name:"Position", options: this.selectedRoles, defaultValue: this.defaultValue })
+    this.empFilters.push({name:"Team", options: this.teamListStrings, defaultValue:this.defaultValue})
+    this.empFilters.push({name:"Coach", options: this.coachList, defaultValue:this.defaultValue})
 
 
     this.dataSourceFilters.filterPredicate = function (record,filter) {
-      debugger;
+      //debugger;
       var map = new Map(JSON.parse(filter));
       let isMatch = false;
       for(let [key,value] of map){
         isMatch = (value=="All") || (record[key as keyof Player] == value); 
+        console.log(isMatch);
         if(!isMatch) return false;
       }
+      console.log(isMatch);
       return isMatch;
+      
     }
   }
 
@@ -131,7 +134,7 @@ export class FreeAgentsComponent implements OnInit, AfterViewInit {
     var jsonString = JSON.stringify(Array.from(this.filterDictionary.entries()));
     
     this.dataSourceFilters.filter = jsonString;
-    //console.log(this.filterValues);
+    console.log(ob.value);
   }
 
 

@@ -131,7 +131,7 @@
         </mat-form-field>
         <br />
 
-        <mat-form-field class="form-field">
+        <!-- <mat-form-field class="form-field">
             <mat-label>Team:</mat-label>
             <mat-select [(ngModel)]="selectedTeams" multiple (change)="applyFilter($event)">
                 <mat-option style="color: white" *ngFor="let team of teamsList" [value]="team">{{team}}</mat-option>
@@ -150,7 +150,7 @@
                 <mat-option value="owned">Owned</mat-option>
                 <mat-option value="available">Available</mat-option>
             </mat-select>
-        </mat-form-field>
+        </mat-form-field> -->
     </div>
 
     <!-- Free agents table -->
@@ -195,7 +195,7 @@
                 </ng-container>
 
                 <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
-                <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+                <tr mat-row *matRowDef="let emprow; columns: displayedColumns"></tr>
         </table>
     </div>
     </div>

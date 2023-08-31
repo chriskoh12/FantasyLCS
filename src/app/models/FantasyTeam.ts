@@ -7,8 +7,8 @@ export interface FantasyTeam {
 
 export interface Player {
     name: string;
-    position: Position;
-    team: Team;
+    position: string;
+    team: string;
 }
 
 export enum Position { // Enum used to be able to use addition to determine cdkDropList role type

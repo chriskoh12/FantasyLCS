@@ -97,8 +97,8 @@ export class NavComponent implements OnInit {
       if (playerMoveEvent.to === 'roster') { // if moving from bench to roster
         const playerPos = this.teams[prevTeam].bench[prevSpot].position; // position of bench player being moved
         const destPos = nextSpot; // position of destination role
-        const moveAllowed = this.checkPlayerValid(playerPos, destPos);
-        if (moveAllowed) {
+        //const moveAllowed = this.checkPlayerValid(playerPos, destPos);
+        if (/*moveAllowed*/ false) {
           if (this.teams[nextTeam].roster[nextSpot]) { // if there is a player in the destination spot, swap them
             [this.teams[nextTeam].roster[nextSpot], this.teams[prevTeam].bench[prevSpot]]
               = [this.teams[prevTeam].bench[prevSpot], this.teams[nextTeam].roster[nextSpot]];
@@ -122,23 +122,23 @@ export class NavComponent implements OnInit {
   checkPlayerSwapValid(prevTeam: number, prevSpot: number, nextTeam: number, nextSpot: number): number {
     const firstPlayerPos = this.teams[prevTeam].roster[prevSpot].position;
     const secondPlayerPos = this.teams[nextTeam].roster[nextSpot] ? this.teams[nextTeam].roster[nextSpot].position : null;
-    const allowMove: boolean = this.checkPlayerValid(firstPlayerPos, Position.top + nextSpot);
-    const allowSwap: boolean = this.checkPlayerValid(secondPlayerPos, Position.top + prevSpot);
+    //const allowMove: boolean = this.checkPlayerValid(firstPlayerPos, Position.top + nextSpot);
+    //const allowSwap: boolean = this.checkPlayerValid(secondPlayerPos, Position.top + prevSpot);
     // refactor: change to enum maybe?
-    if (allowMove) {
-      if (allowSwap) {
-        return 1; // if players can be swapped
-      }
-      return 0; // if moving player can move to destination, but other player cannot go to previous location
-    }
+    // if (allowMove) {
+    //   if (allowSwap) {
+    //     return 1; // if players can be swapped
+    //   }
+    //   return 0; // if moving player can move to destination, but other player cannot go to previous location
+    // }
     return -1; // if moving player cannot be moved to destination
   }
 
-  checkPlayerValid(playerPos: Position, destPos: Position): boolean {
+  checkPlayerValid(playerPos: string, destPos: string): boolean {
     if (playerPos === null) {
       return true;
     }
-    if (destPos === Position.flex && playerPos !== Position.team) {
+    if (destPos === 'Flex' && playerPos !== 'Team') {
       return true;
     }
     return destPos === playerPos;
